@@ -140,8 +140,8 @@
     </div>
 
 
-    <button class="button-1" data-bs-toggle="modal" data-bs-target="#modalAuth"
-      onclick="setFormType('signIn')">Sign In</button>
+    <button class="button-1" data-bs-toggle="modal" data-bs-target="#modalAuth" onclick="setFormType('signIn')">Sign
+      In</button>
 
 
     <div class="modal fade" id="modalAuth" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
@@ -450,81 +450,81 @@
 
   <!---------------------------------------- Index page body codes starts here  ---------------------------------------->
 
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="spinner-border text-success" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-        <p class="mt-2 text-white">Loading product data...</p>
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner-border text-success" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
+    <p class="mt-2 text-white">Loading product data...</p>
+  </div>
 
-    <nav aria-label="breadcrumb" class="container mt-3">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Food</a></li>
-            <li class="breadcrumb-item"><a href="#">Pantry</a></li>
-            <li class="breadcrumb-item"><a href="#">Snacks</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Chewing Gum</li>
-        </ol>
-    </nav>
+  <nav aria-label="breadcrumb" class="container mt-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Food</a></li>
+      <li class="breadcrumb-item"><a href="#">Pantry</a></li>
+      <li class="breadcrumb-item"><a href="#">Snacks</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Chewing Gum</li>
+    </ol>
+  </nav>
 
-    <section class="container py-5" id="productDetailsSection">
-        <div class="row">
-            <div class="col-md-6 image-section order-md-1 order-3">
-                <img id="main-image" src="" alt="Product Image" class="img-fluid rounded shadow mb-3">
-                <div class="thumbnail-container">
-                    <div class="thumbnail-slider" id="thumbnail-slider">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 product-details mt-4 mt-md-0 order-md-2 order-1">
-                <span class="popular-tag">Popular Item</span>
-                <h1 class="h3 font-weight-bold text-dark mt-2" id="product-name"></h1>
-                <p class="text-muted" id="product-quantity"></p>
-                <div class="d-flex align-items-center">
-                    <p class="h4 font-weight-semibold text-success mr-2" id="product-price"></p>
-                    <span class="badge badge-success" id="product-discount"></span>
-                </div>
-                <p class="small text-muted" id="product-regular-price"></p>
-                <a href="#" class="small text-primary">Rate Product</a>
-
-                <div class="mt-4 quantity-control">
-                    <button class="btn btn-outline-secondary" onclick="updateQuantity(-1)">-</button>
-                    <input type="text" id="quantity" value="1" class="form-control mx-1" readonly>
-                    <button class="btn btn-outline-secondary" onclick="updateQuantity(1)">+</button>
-                </div>
-
-                <div class="mt-4">
-                    <button class="btn btn-success add-to-cart-btn" onclick="addToCart('orbit-gum-spearmint')">Add to
-                        cart</button>
-                </div>
-
-                <div class="mt-4 d-flex align-items-center">
-                    <img id="store-logo" src="" alt="Store Logo" class="mr-2">
-                    <p class="small text-dark mb-0" id="store-info"></p>
-                </div>
-
-            </div>
+  <section class="container py-5" id="productDetailsSection">
+    <div class="row">
+      <div class="col-md-6 image-section order-md-1 order-3">
+        <img id="main-image" src="" alt="Product Image" class="img-fluid rounded shadow mb-3">
+        <div class="thumbnail-container">
+          <div class="thumbnail-slider" id="thumbnail-slider">
+          </div>
         </div>
-    </section>
+      </div>
 
-    <section class="container py-5 order-md-3 order-4">
-        <h2 class="h4 font-weight-bold">Product Details</h2>
-        <p class="text-muted mt-3" id="product-description"></p>
-        <ul class="list-unstyled mt-3" id="product-details-list">
-        </ul>
-    </section>
-
-    <section class="container py-4 mb-5 order-md-4 order-5" id="relatedProducts">
-        <h2 class="h4 font-weight-bold mb-4">Related Products</h2>
-        <div class="row" id="related-products">
+      <div class="col-md-6 product-details mt-4 mt-md-0 order-md-2 order-1">
+        <span class="popular-tag">Popular Item</span>
+        <h1 class="h3 font-weight-bold text-dark mt-2" id="product-name"></h1>
+        <p class="text-muted" id="product-quantity"></p>
+        <div class="d-flex align-items-center">
+          <p class="h4 font-weight-semibold text-success mr-2" id="product-price"></p>
+          <span class="badge badge-success" id="product-discount"></span>
         </div>
-        <div class="text-center mt-3">
-            <button class="btn btn-outline-primary">View More Products</button>
-        </div>
-    </section>
+        <p class="small text-muted" id="product-regular-price"></p>
+        <a href="#" class="small text-primary">Rate Product</a>
 
-    
- <!---------------------------------------- Index page body codes ends here  ---------------------------------------->
+        <div class="mt-4 quantity-control">
+          <button class="btn btn-outline-secondary" onclick="updateQuantity(-1)">-</button>
+          <input type="text" id="quantity" value="1" class="form-control mx-1" readonly>
+          <button class="btn btn-outline-secondary" onclick="updateQuantity(1)">+</button>
+        </div>
+
+        <div class="mt-4">
+          <button class="btn btn-success add-to-cart-btn" onclick="addToCart('orbit-gum-spearmint')">Add to
+            cart</button>
+        </div>
+
+        <div class="mt-4 d-flex align-items-center">
+          <img id="store-logo" src="" alt="Store Logo" class="mr-2">
+          <p class="small text-dark mb-0" id="store-info"></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5 order-md-3 order-4">
+    <h2 class="h4 font-weight-bold">Product Details</h2>
+    <p class="text-muted mt-3" id="product-description"></p>
+    <ul class="list-unstyled mt-3" id="product-details-list">
+    </ul>
+  </section>
+
+  <section class="container py-4 mb-5 order-md-4 order-5" id="relatedProducts">
+    <h2 class="h4 font-weight-bold mb-4">Related Products</h2>
+    <div class="row" id="related-products">
+    </div>
+    <div class="text-center mt-3">
+      <button class="btn btn-outline-primary">View More Products</button>
+    </div>
+  </section>
+
+
+  <!---------------------------------------- Index page body codes ends here  ---------------------------------------->
 
 
 
@@ -571,57 +571,18 @@
   </div>
   <!-- Footer section ends here -->
 
-  <div class="modal fade" id="modalAuth" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog custom-modal-width">
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-header p-4 pb-4 border-bottom-0">
-          <h1 class="fw-bold mb-0 fs-2" id="modalTitle">Sign Up</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body px-5 pt-0">
-          <form id="authForm">
-            <!-- Sign Up Form -->
-            <div id="signUpForm">
-              <div class="mb-3">
-                <label for="floatingInput" class="form-label">Enter your email to sign up</label>
-                <input type="email" class="form-control custom-input" id="floatingInput" placeholder="Email">
-              </div>
-              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign Up</button>
-              <p class="text-body-secondary mt-1">
-                By clicking Sign up, you agree to our
-                <a href="#">Terms of Service</a>,
-                <a href="#">Privacy Policy</a> &
-                <a href="#">Health Data Notice</a>.
-              </p>
-            </div>
-
-            <!-- Sign In Form (hidden initially) -->
-            <div id="signInForm" style="display: none;">
-              <div class="mb-3">
-                <label for="floatingInputSignin" class="form-label">Enter your email to sign in</label>
-                <input type="email" class="form-control custom-input" id="floatingInputSignin" placeholder="Email">
-              </div>
-              <button class="w-100 mb-4 btn btn-lg rounded-3 btn-primary" type="submit">Sign In</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Scripts  -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-  crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-  crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
   <!-- google location api -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
@@ -641,111 +602,111 @@
   <script src="./js/script.js"></script>
 
 
-  
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyDoya84WdBIexSXCNsabopVgs7XSWKoz7U",
-            authDomain: "bsamcart-dd9cb.firebaseapp.com",
-            databaseURL: "https://bsamcart-dd9cb-default-rtdb.firebaseio.com/",
-            projectId: "bsamcart-dd9cb",
-            storageBucket: "bsamcart-dd9cb.appspot.com",
-            messagingSenderId: "111163982289",
-            appId: "1:111163982289:web:a6ad4624f2cdc414b420f0",
-            measurementId: "G-V9930E2TZB"
-        };
 
-        firebase.initializeApp(firebaseConfig);
-        console.log("Firebase initialized");
-    </script>
-    <script>
-        const productData = {
-            name: "Orbit Gum Spearmint Sugar Free Chewing Gum Single Pack",
-            quantity: "14 ct",
-            price: 1.79,
-            regularPrice: 2.69,
-            discount: "33% off",
-            store: "Safeway",
-            deliveryInfo: "Delivery by 11:03am • Pickup by 10:28am",
-            zipCode: "94015",
-            details: {
-                description: "Get the fresh, minty flavor you love with Orbit Gum Spearmint Sugar Free Chewing Gum. This pack contains 14 pieces of sugar-free gum, perfect for freshening your breath on the go. Ideal for sharing or keeping in your bag, car, or desk.",
-                flavor: "Spearmint",
-                count: "14 pieces",
-                type: "Sugarfree",
-                brand: "Orbit"
-            },
-            images: [
-                "https://placehold.co/400x300?text=Orbit+Gum+Spearmint",
-                "https://placehold.co/400x300?text=Thumb+30",
-                "https://placehold.co/400x300?text=Thumb+2",
-                "https://placehold.co/400x300?text=Thumb+3",
-                "https://placehold.co/400x300?text=Thumb+4",
-                "https://placehold.co/400x300?text=Thumb+5",
-                "https://placehold.co/400x300?text=Thumb+6",
-                "https://placehold.co/400x300?text=Thumb+7",
-                "https://placehold.co/400x300?text=Thumb+8",
-                "https://placehold.co/400x300?text=Thumb+9",
-                "https://placehold.co/400x300?text=Thumb+10",
-                "https://placehold.co/400x300?text=Thumb+11",
-                "https://placehold.co/400x300?text=Thumb+12",
-                "https://placehold.co/400x300?text=Thumb+13",
-                "https://placehold.co/400x300?text=Thumb+14",
-                "https://placehold.co/400x300?text=Thumb+15",
-                "https://placehold.co/400x300?text=Thumb+16",
-                "https://placehold.co/400x300?text=Thumb+17",
-                "https://placehold.co/400x300?text=Thumb+18",
-                "https://placehold.co/400x300?text=Thumb+19",
-                "https://placehold.co/400x300?text=Thumb+20",
-                "https://placehold.co/400x300?text=Thumb+21",
-                "https://placehold.co/400x300?text=Thumb+22",
-                "https://placehold.co/400x300?text=Thumb+23",
-                "https://placehold.co/400x300?text=Thumb+24",
-                "https://placehold.co/400x300?text=Thumb+25",
-            ],
-            storeLogo: "https://placehold.co/40x40?text=Safeway"
-        };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDoya84WdBIexSXCNsabopVgs7XSWKoz7U",
+      authDomain: "bsamcart-dd9cb.firebaseapp.com",
+      databaseURL: "https://bsamcart-dd9cb-default-rtdb.firebaseio.com/",
+      projectId: "bsamcart-dd9cb",
+      storageBucket: "bsamcart-dd9cb.appspot.com",
+      messagingSenderId: "111163982289",
+      appId: "1:111163982289:web:a6ad4624f2cdc414b420f0",
+      measurementId: "G-V9930E2TZB"
+    };
 
-        const relatedProducts = [
-            {
-                id: "extra-gum-spearmint",
-                name: "Extra Spearmint Sugar Free Gum",
-                price: 1.59,
-                quantity: "15 ct",
-                image: "https://placehold.co/200x200?text=Extra+Gum",
-                isPopular: false
-            },
-            {
-                id: "trident-gum-spearmint",
-                name: "Trident Spearmint Sugar Free Gum",
-                price: 1.89,
-                quantity: "14 ct",
-                image: "https://placehold.co/200x200?text=Trident",
-                isPopular: false
-            },
-            {
-                id: "orbit-gum-wintermint",
-                name: "Orbit Wintermint Sugar Free Gum",
-                price: 1.79,
-                quantity: "14 ct",
-                image: "https://placehold.co/200x200?text=Orbit+Wintermint",
-                isPopular: true
-            },
-            {
-                id: "wrigleys-doublemint",
-                name: "Wrigley's Doublemint Gum",
-                price: 1.99,
-                quantity: "15 ct",
-                image: "https://placehold.co/200x200?text=Wrigley's",
-                isPopular: false
-            }
-        ];
+    firebase.initializeApp(firebaseConfig);
+    console.log("Firebase initialized");
+  </script>
+  <script>
+    const productData = {
+      name: "Orbit Gum Spearmint Sugar Free Chewing Gum Single Pack",
+      quantity: "14 ct",
+      price: 1.79,
+      regularPrice: 2.69,
+      discount: "33% off",
+      store: "Safeway",
+      deliveryInfo: "Delivery by 11:03am • Pickup by 10:28am",
+      zipCode: "94015",
+      details: {
+        description: "Get the fresh, minty flavor you love with Orbit Gum Spearmint Sugar Free Chewing Gum. This pack contains 14 pieces of sugar-free gum, perfect for freshening your breath on the go. Ideal for sharing or keeping in your bag, car, or desk.",
+        flavor: "Spearmint",
+        count: "14 pieces",
+        type: "Sugarfree",
+        brand: "Orbit"
+      },
+      images: [
+        "https://placehold.co/400x300?text=Orbit+Gum+Spearmint",
+        "https://placehold.co/400x300?text=Thumb+30",
+        "https://placehold.co/400x300?text=Thumb+2",
+        "https://placehold.co/400x300?text=Thumb+3",
+        "https://placehold.co/400x300?text=Thumb+4",
+        "https://placehold.co/400x300?text=Thumb+5",
+        "https://placehold.co/400x300?text=Thumb+6",
+        "https://placehold.co/400x300?text=Thumb+7",
+        "https://placehold.co/400x300?text=Thumb+8",
+        "https://placehold.co/400x300?text=Thumb+9",
+        "https://placehold.co/400x300?text=Thumb+10",
+        "https://placehold.co/400x300?text=Thumb+11",
+        "https://placehold.co/400x300?text=Thumb+12",
+        "https://placehold.co/400x300?text=Thumb+13",
+        "https://placehold.co/400x300?text=Thumb+14",
+        "https://placehold.co/400x300?text=Thumb+15",
+        "https://placehold.co/400x300?text=Thumb+16",
+        "https://placehold.co/400x300?text=Thumb+17",
+        "https://placehold.co/400x300?text=Thumb+18",
+        "https://placehold.co/400x300?text=Thumb+19",
+        "https://placehold.co/400x300?text=Thumb+20",
+        "https://placehold.co/400x300?text=Thumb+21",
+        "https://placehold.co/400x300?text=Thumb+22",
+        "https://placehold.co/400x300?text=Thumb+23",
+        "https://placehold.co/400x300?text=Thumb+24",
+        "https://placehold.co/400x300?text=Thumb+25",
+      ],
+      storeLogo: "https://placehold.co/40x40?text=Safeway"
+    };
 
-        function loadRelatedProducts() {
-            const relatedProductsContainer = document.getElementById('related-products');
-            relatedProducts.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'col-6 col-md-3 mb-4';
-                productCard.innerHTML = `
+    const relatedProducts = [
+      {
+        id: "extra-gum-spearmint",
+        name: "Extra Spearmint Sugar Free Gum",
+        price: 1.59,
+        quantity: "15 ct",
+        image: "https://placehold.co/200x200?text=Extra+Gum",
+        isPopular: false
+      },
+      {
+        id: "trident-gum-spearmint",
+        name: "Trident Spearmint Sugar Free Gum",
+        price: 1.89,
+        quantity: "14 ct",
+        image: "https://placehold.co/200x200?text=Trident",
+        isPopular: false
+      },
+      {
+        id: "orbit-gum-wintermint",
+        name: "Orbit Wintermint Sugar Free Gum",
+        price: 1.79,
+        quantity: "14 ct",
+        image: "https://placehold.co/200x200?text=Orbit+Wintermint",
+        isPopular: true
+      },
+      {
+        id: "wrigleys-doublemint",
+        name: "Wrigley's Doublemint Gum",
+        price: 1.99,
+        quantity: "15 ct",
+        image: "https://placehold.co/200x200?text=Wrigley's",
+        isPopular: false
+      }
+    ];
+
+    function loadRelatedProducts() {
+      const relatedProductsContainer = document.getElementById('related-products');
+      relatedProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'col-6 col-md-3 mb-4';
+        productCard.innerHTML = `
     <div class="card h-100 border-0 shadow-sm">
         <div class="position-relative">
             <img src="${product.image}" class="card-img-top" alt="${product.name}">
@@ -761,78 +722,78 @@
         </div>
     </div>
 `;
-                relatedProductsContainer.appendChild(productCard);
-            });
+        relatedProductsContainer.appendChild(productCard);
+      });
+    }
+
+    function updateQuantity(change) {
+      const quantityInput = document.getElementById('quantity');
+      let quantity = parseInt(quantityInput.value);
+      quantity = Math.max(1, quantity + change);
+      quantityInput.value = quantity;
+    }
+
+    function changeImage(newSrc, element) {
+      document.getElementById('main-image').src = newSrc;
+      const thumbnails = document.querySelectorAll('.thumbnail-img');
+      thumbnails.forEach(thumb => thumb.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    function addToCart(productId) {
+      console.log(`Added product with ID ${productId} to cart`);
+    }
+
+    async function fetchFirstProduct() {
+      document.getElementById('loading-overlay').classList.remove('hidden');
+
+      const db = firebase.firestore();
+      try {
+        const querySnapshot = await db.collection("vendor_products").limit(1).get();
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0];
+          const data = doc.data();
+          console.log("First Product Data:", data);
+
+          document.getElementById('product-name').textContent = data.name || "No name available";
+          document.getElementById('product-price').textContent = `$${data.price || "0.00"}`;
+          document.getElementById('product-quantity').textContent = `${data.quantity || "N/A"} pcs`;
+
+          document.getElementById('product-description').textContent = data.description || "No description available";
+
+          document.getElementById('main-image').src = "https://placehold.co/400x300?text=Orbit+Gum+Spearmint";
+
+          const thumbnailSlider = document.getElementById('thumbnail-slider');
+          thumbnailSlider.innerHTML = "";
+
+          const additionalImages = [
+            "https://placehold.co/400x300?text=Orbit+Gum+Spearmint",
+            "https://placehold.co/400x300?text=Thumb+1",
+            "https://placehold.co/400x300?text=Thumb+2",
+            "https://placehold.co/400x300?text=Thumb+3"
+          ];
+
+          additionalImages.forEach((image, index) => {
+            const img = document.createElement('img');
+            img.src = image.replace('400x300', '60x60');
+            img.alt = `Thumbnail ${index}`;
+            img.className = `thumbnail-img ${index === 0 ? 'active' : ''}`;
+            img.onclick = () => changeImage(image, img);
+            thumbnailSlider.appendChild(img);
+          });
+        } else {
+          console.error("No product found in the vendor_products collection.");
         }
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      } finally {
+        document.getElementById('loading-overlay').classList.add('hidden');
+      }
+    }
 
-        function updateQuantity(change) {
-            const quantityInput = document.getElementById('quantity');
-            let quantity = parseInt(quantityInput.value);
-            quantity = Math.max(1, quantity + change);
-            quantityInput.value = quantity;
-        }
-
-        function changeImage(newSrc, element) {
-            document.getElementById('main-image').src = newSrc;
-            const thumbnails = document.querySelectorAll('.thumbnail-img');
-            thumbnails.forEach(thumb => thumb.classList.remove('active'));
-            element.classList.add('active');
-        }
-
-        function addToCart(productId) {
-            console.log(`Added product with ID ${productId} to cart`);
-        }
-
-        async function fetchFirstProduct() {
-            document.getElementById('loading-overlay').classList.remove('hidden');
-
-            const db = firebase.firestore();
-            try {
-                const querySnapshot = await db.collection("vendor_products").limit(1).get();
-                if (!querySnapshot.empty) {
-                    const doc = querySnapshot.docs[0];
-                    const data = doc.data();
-                    console.log("First Product Data:", data);
-
-                    document.getElementById('product-name').textContent = data.name || "No name available";
-                    document.getElementById('product-price').textContent = `$${data.price || "0.00"}`;
-                    document.getElementById('product-quantity').textContent = `${data.quantity || "N/A"} pcs`;
-
-                    document.getElementById('product-description').textContent = data.description || "No description available";
-
-                    document.getElementById('main-image').src = "https://placehold.co/400x300?text=Orbit+Gum+Spearmint";
-
-                    const thumbnailSlider = document.getElementById('thumbnail-slider');
-                    thumbnailSlider.innerHTML = "";
-
-                    const additionalImages = [
-                        "https://placehold.co/400x300?text=Orbit+Gum+Spearmint",
-                        "https://placehold.co/400x300?text=Thumb+1",
-                        "https://placehold.co/400x300?text=Thumb+2",
-                        "https://placehold.co/400x300?text=Thumb+3"
-                    ];
-
-                    additionalImages.forEach((image, index) => {
-                        const img = document.createElement('img');
-                        img.src = image.replace('400x300', '60x60');
-                        img.alt = `Thumbnail ${index}`;
-                        img.className = `thumbnail-img ${index === 0 ? 'active' : ''}`;
-                        img.onclick = () => changeImage(image, img);
-                        thumbnailSlider.appendChild(img);
-                    });
-                } else {
-                    console.error("No product found in the vendor_products collection.");
-                }
-            } catch (error) {
-                console.error("Error fetching product data:", error);
-            } finally {
-                document.getElementById('loading-overlay').classList.add('hidden');
-            }
-        }
-
-        fetchFirstProduct();
-        loadRelatedProducts();
-    </script>
+    fetchFirstProduct();
+    loadRelatedProducts();
+  </script>
 
 </body>
 

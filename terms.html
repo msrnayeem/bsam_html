@@ -28,8 +28,6 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow-y: hidden;
         }
 
         .social-btn {
@@ -130,41 +128,6 @@
             max-width: unset;
         }
 
-        .scrollable-wrapper {
-            height: 100vh;
-            overflow-y: auto;
-            /* Enable scrolling within wrapper */
-            -ms-overflow-style: none;
-            /* Hide scrollbar for IE/Edge */
-            scrollbar-width: none;
-            /* Hide scrollbar for Firefox */
-        }
-
-        .scrollable-wrapper::-webkit-scrollbar {
-            display: none;
-            /* Hide scrollbar for Chrome, Safari */
-        }
-
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background: #ccc;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10000;
-            /* High z-index to ensure visibility */
-            pointer-events: none;
-            /* Prevent interaction with progress bar */
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: #007bff;
-            width: 0%;
-            transition: width 0.6s ease-out;
-        }
-
         .header-terms {
             background-color: #f8f9fa;
             padding: 2rem 0;
@@ -174,18 +137,6 @@
 
         .content-section {
             padding: 2rem;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .content-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .terms {
-            max-width: 800px;
         }
     </style>
 </head>
@@ -841,53 +792,6 @@
 
     <!-- custom script  -->
     <script src="./js/script.js"></script>
-
-    <script>
-        // Progress Bar Functionality
-        const wrapper = document.querySelector('.scrollable-wrapper');
-        let targetWidth = 0;
-
-        function updateProgressBar() {
-            const winScroll = wrapper.scrollTop;
-            const height = wrapper.scrollHeight - wrapper.clientHeight;
-            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-
-            // Smooth the progress
-            targetWidth = scrolled;
-            const smoothProgress = () => {
-                const currentWidth = parseFloat(document.getElementById("proBar").style.width) || 0;
-                const delta = (targetWidth - currentWidth) * 0.1; // Smoothing factor
-                const newWidth = currentWidth + delta;
-                document.getElementById("proBar").style.width = newWidth + "%";
-
-                // Continue smoothing until close to target
-                if (Math.abs(newWidth - targetWidth) > 0.1) {
-                    requestAnimationFrame(smoothProgress);
-                }
-            };
-            requestAnimationFrame(smoothProgress);
-        }
-
-        // Attach scroll event listener to wrapper
-        wrapper.addEventListener('scroll', updateProgressBar);
-        updateProgressBar(); // Initial call to set progress bar
-
-        // Scroll Animation for Sections
-        const sections = document.querySelectorAll('.content-section');
-
-        const checkVisibility = () => {
-            const triggerBottom = window.innerHeight * 0.8; // Trigger at 80% of viewport
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < triggerBottom) {
-                    section.classList.add('visible');
-                }
-            });
-        };
-
-        wrapper.addEventListener('scroll', checkVisibility);
-        checkVisibility(); // Run on page load
-    </script>
 </body>
 
 </html>
