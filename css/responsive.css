@@ -1,0 +1,161 @@
+@media (min-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width:1130px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    animation: slideIn 0.5s ease;
+  }
+
+  .table-container table {
+    min-width: 700px;
+  }
+}
+
+@media (max-width:992px) {
+    .product-card .product-details div {
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        flex-direction: column;
+    }
+
+    .add-to-cart-btn{
+        width: 100%;
+    }
+
+    .popup{
+      width: 90% !important;
+      
+    }
+
+    .checkout-page table{
+      width: 100% !important;
+    }
+
+    .heartIcon{
+      margin-top: -19px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        padding-top: 52px;
+    }
+
+    .top-header .logo {
+        display: none;
+    }
+
+
+    .top-header .logo-top {
+        display: block;
+    }
+
+    .logo-top-a {
+        display: block;
+    }
+
+    .cartSideBar{
+      padding-bottom: 110px !important;
+    }
+
+    .account-text {
+        display: none;
+    }
+
+    .mobile-account-section {
+        display: flex;
+        z-index: 11;
+        background: white;
+        bottom: 0;
+        position: fixed;
+    }
+
+    .single-category {
+        width: 200px;
+      }
+
+      .product-title{
+        font-size: 13px;
+      }
+
+    .grocery-count-section .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .largest-grocery-section .stats-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .wishlist .body{
+        width:  95% !important;
+      }
+
+      .user-profile .onside-picture-name{
+        display: none;
+      }
+
+      .user-profile .responsive-profile{
+        display: block;
+      }
+
+      .footer-section{
+        padding-bottom: 95px;
+      }
+
+      .products-page{
+        width: 97%;
+      }
+}
+
+
+@media (max-width: 642px) {
+    .cartSideBar {
+        max-width: 100%;
+    }
+
+    .cartSideBar table{
+        min-width: 600px; 
+        border-collapse: collapse;
+        overflow-x: auto; 
+        width: 100%;
+    }
+
+    .slick-prev {
+        left: 0;
+      }
+      
+      .slick-next {
+        right: 0;
+      }
+
+      
+}
+
+
+@media (max-width: 576px) {
+    .product-card {
+        max-width: 100%;
+        padding: 12px;
+      }
+  
+      .product-card img {
+        max-height: 160px;
+      }
+  
+      .product-title {
+        font-size: 0.95rem;
+      }
+      
+      .add-to-cart-btn {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+      }
+  }
+  

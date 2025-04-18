@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bsamcart</title>
+
+    <!-- Favicon link  -->
+    <link rel="icon" href="./images/bsam-logo.png" type="image">
+
+    <!-- Bootstrap css  -->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+
+    <!-- Font Awesome cdn  -->
+    <!-- <link rel="stylesheet" href="./css/fontawesome.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Slick Slider cdn  -->
+    <link rel="stylesheet" href="./css/slick-slider.css">
+    <!-- <link rel="stylesheet" href="./css/slick-theme.css"> -->
+
+    <!-- styling css  -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+</head>
+
+<body>
+    <!-- header starts here  -->
+    <div class="top-header">
+        <a href="#" class="logo-top-a"><img src="./images/bsam-logo.png" alt="BSAM Logo" class="logo logo-top"></a>
+        <div class="logo-section">
+            <span onclick="openMenuBar()"><i class="fa-solid fa-bars"></i></span>
+            <a href="#"><img src="./images/bsam-logo.png" alt="BSAM Logo" class="logo"></a>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search bsamcart.ca">
+            <button><span><i class="fa-solid fa-magnifying-glass"></i></span></button>
+        </div>
+
+        <div class="account-section">
+            <div class="account-text" id="account-text" onclick="openDropdownOptions()">
+                Hello, Mr. X<br>
+                <b>Account & Lists <span><i class="fa-solid fa-circle-arrow-down"></i></span></b>
+
+                <div class="dropdown-options" id="dropdown-options">
+                    <ul>
+                        <li><a href="account-setting.html">Account Setting</a></li>
+                        <li><a href="#">Manage Address</a></li>
+                        <li><a href="#">Payment Setting</a></li>
+                        <li><a href="#">Order Lists</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cart-icon" onclick="openCart()">
+                <span class="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                <span class="cart-count">1</span>
+
+
+            </div>
+            <div class="sidebar cartSideBar" id="cartSideBar">
+                <div class="cart-title">
+                    <p class="items-quantity mb-0">
+                        4 items
+                    </p>
+                    <span onclick="closeCart()" class="close-cart"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+                <div class="cart-items">
+                    <div style="overflow-x: auto;">
+                        <table class="table table-striped text-center" style="min-width: 600px;">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
+                                    </td>
+                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                                    <td>
+                                        <div class="qty-buttons">
+                                            <button class="decrease">-</button>
+                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                                            <button class="increase">+</button>
+                                        </div>
+                                    </td>
+                                    <td>800</td>
+                                </tr>
+                                <tr>
+                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
+                                    </td>
+                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                                    <td>
+                                        <div class="qty-buttons">
+                                            <button class="decrease">-</button>
+                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                                            <button class="increase">+</button>
+                                        </div>
+                                    </td>
+                                    <td>800</td>
+                                </tr>
+                                <tr>
+                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
+                                    </td>
+                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                                    <td>
+                                        <div class="qty-buttons">
+                                            <button class="decrease">-</button>
+                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                                            <button class="increase">+</button>
+                                        </div>
+                                    </td>
+                                    <td>800</td>
+                                </tr>
+                                <tr>
+                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
+                                    </td>
+                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                                    <td>
+                                        <div class="qty-buttons">
+                                            <button class="decrease">-</button>
+                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                                            <button class="increase">+</button>
+                                        </div>
+                                    </td>
+                                    <td>800</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Total</td>
+                                    <td>3200 Tk.</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="check-out-btn text-end">
+
+                    <a href="check-out.html" class="button-1 text-decoration-none fs-5 mb-3 mx-3">Proceed to
+                        checkout</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- delete confirmation pop up starts here  -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <p>Do you want to delete this product?</p>
+            <div class="modal-buttons">
+                <button id="confirmDelete" class="btn btn-danger">Yes</button>
+                <button id="cancelDelete" class="btn btn-secondary">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- success message -->
+    <div id="successMessage" class="success-toast">Product deleted successfully!</div>
+
+    <!-- delete confirmation pop up ends here  -->
+
+    <!-- mobile account section starts -->
+    <div class="mobile-account-section">
+        <div class="icon">
+            <span><i class="fa-solid fa-house"></i></span>
+            <p class="mb-0">Home</p>
+        </div>
+
+        <div class="icon">
+            <span><i class="fa-regular fa-heart"></i></span>
+            <p class="mb-0">Wishlist</p>
+        </div>
+
+        <div class="icon">
+            <span><i class="fa-solid fa-right-to-bracket"></i></span>
+            <p class="mb-0">Login/Signup</p>
+        </div>
+
+        <div class="icon" onclick="openProfileSideBar()">
+            <span><i class="fa-solid fa-user"></i></span>
+            <p class="mb-0">Profile</p>
+        </div>
+
+
+    </div>
+    <!-- mobile account section ends -->
+
+
+    <!-- Account side bar section starts here -->
+    <div class="sidebar profile" id="profile">
+        <div class="d-flex justify-content-between align-items-center" style="background: beige;padding:10px 20px;">
+            <span onclick="closeProfileSideBar()"><i class="fa-solid fa-xmark"></i></span>
+            <div class="profile-picture">
+                <img src="" alt="">
+            </div>
+        </div>
+        <ul>
+            <li><a href="#">Account Setting</a></li>
+            <li><a href="#">Manage Address</a></li>
+            <li><a href="#">Payment Setting</a></li>
+            <li><a href="#">Order Lists</a></li>
+            <li><a href="#">Wishlist</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+    <!-- Account side bar section ends here -->
+
+    <!-- Side category bar section starts here  -->
+    <div class="sidebar sideMenu" id="sideMenu">
+        <div class="d-flex justify-content-between align-items-center" style="background: beige;padding:10px 20px;">
+            <h4>Categories</h4>
+            <span onclick="closeMenuBar()"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <ul>
+            <li><a href="#">Cake</a></li>
+            <li><a href="#">Burger</a></li>
+            <li><a href="#">Noodles</a></li>
+            <li><a href="#">Vegetables</a></li>
+            <li><a href="#">Oil</a></li>
+
+        </ul>
+    </div>
+    <!-- Side category bar section ends here  -->
+
+
+
+    <!-- overlay starts -->
+    <div class="overlay" id="overlay" onclick="closeMenuBar(); closeCart(), closeProfileSideBar()"></div>
+    <!-- overlay end -->
+    <!-- header ends here  -->
+
+
+    <div class="user-profile ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 onside-picture-name">
+                    <div class="card custom-shadow">
+                        <div class="d-flex gap-2 m-auto py-3" style="width: 90%;">
+                            <img src="./images/apple.jpeg" style="border-radius: 50%;" width="80" height="80"
+                                alt="Profile photo">
+                            <h5 class="align-content-center fw-bold" style="margin-top: 9px; color: #099242;">Mr. X</h5>
+                        </div>
+                        <div class="bg-light">
+                            <div class=" wallet-amount d-flex justify-content-between py-2 m-auto fs-5"
+                                style="width: 90%;">
+
+                                <p class="mb-0">Total orders</p>
+                                <a href="order-list.html" style="color: #099242;">
+                                    <p class="mb-0 fw-bold">10</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                    <div class="card custom-shadow p-3">
+                        <h4 class="fw-bold mb-4 pb-3 border-bottom">My Account</h4>
+                        <div class="responsive-profile text-center">
+                            <img src="./images/apple.jpeg" height="80" width="80" class="mb-2" alt="Profile Photo">
+                            <h5 style="color: #099242;" class="fw-bold">Mr X.</h5>
+                            <div class="wallet-amount-2 mb-3 d-flex justify-content-between">
+                                <p class="mb-0">Total orders:</p>
+                                <a href="order-list.html" class="text-white">
+                                    <p class="mb-0 fw-bold">10</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="mb-2" for="">First Name</label>
+                            <input type="text" class="form-control" placeholder="Your First Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="mb-2" for="">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Your Last Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="mb-2" for="">Email</label>
+                            <input type="text" class="form-control" value="gmail@gmail.com" disabled>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="mb-2" for="">Phone Number</label>
+                            <div class="phone-input-container">
+                                <select class="country-code-select" disabled>
+                                    <option value="+1">Ca +1</option>>
+                                </select>
+                                <input class="phone-input" type="tel" disabled placeholder="Enter phone number" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="mb-2">Date of Birth</label>
+                            <input type="date" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="mb-2">Select Gender:</label><br>
+                            <input type="radio" name="gender"> <Label>Male</Label><br>
+                            <input type="radio" name="gender"> <Label>Female</Label><br>
+                            <input type="radio" name="gender"> <Label>Other</Label><br>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="card" style="display: inline-block; padding: 8px; text-align: center;">
+                                <img src="./images/apple.jpeg" class="mb-2" width="120" height="120"
+                                    alt="Present Image">
+                                <p class="mb-0">Present Image</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="mb-2" for="">Change Profile Image</label>
+                            <input type="file" class="form-control">
+                        </div>
+
+                        <button class="button-1">Save</button>
+                    </div>
+
+
+                    <!---------------------------------------- Manage address section starts here  ---------------------------------------->
+
+
+                    <div class="manage-address py-5">
+                        <div class="addresses p-3 card">
+                            <div class="row">
+                                <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+                                    <h2 class="fw-bold">Deliver to</h2>
+                                    <h4><span><i class="fa-solid fa-location-dot"></i></span> Nurjahan road,
+                                        Mohammadpur, Dhaka-1207</h4>
+                                    <p class="mb-0"><span id="instruction1">Leave at the door</span> | <span
+                                            id="additinal2">Additional instructions</span></p>
+                                </div>
+                                <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+                                    <div class="add-another">
+                                        <button onclick="showPopup()" class="button-1">Change</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <button onclick="showPopup()" class="text-decoration-underline bg-transparent border-0 py-2"
+                                style=" text-align: left; margin-left: 17px;"><span><i
+                                        class="fa-solid fa-plus"></i></span> Add your delivery location</button>
+                        </div>
+                    </div>
+
+                    <div class="popup-container" id="popupContainer">
+                        <div class="popup w-50 pt-1" style="height: 80%;">
+                            <span onclick="hidePopup()"><i class="fa-solid fa-xmark"></i></span>
+                            <div class="main-section">
+                                <div class="location-section mb-4">
+                                    <input type="text" class="form-control" id="locationInput"
+                                        placeholder="Enter your location">
+                                    <div id="map"></div>
+                                </div>
+
+                                <div class="instruction text-start mt-4">
+                                    <h5 class="fw-bold">Instructions</h5>
+                                    <div class="options d-flex gap-3">
+                                        <p class="toggle-btn" onclick="setActive(this)">Leave at the
+                                            door</p>
+                                        <p class="toggle-btn" onclick="setActive(this)">Meet at the
+                                            door</p>
+                                    </div>
+                                    <div class="additional">
+                                        <textarea name="" id="textInput" oninput="updateText()"
+                                            placeholder="Additional instruction" rows="1" style="resize: none;" id=""
+                                            class="form-control"></textarea>
+                                        <p>Example: “please don’t ring doorbell, walk up the steps”
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button-1 w-50 fs-5 mt-3 align-self-center"
+                                onclick="hidePopup()">Save</button>
+                        </div>
+                    </div>
+
+                    <!---------------------------------------- Manage address section ends here  ---------------------------------------->
+
+
+                    <!-- Payment option adding section starts here -->
+                    <div class="payment-method-section">
+                        <div class="payment-section">
+                            <div class="payment-details">
+                                <h2 class="fw-bold">Payment Method</h2>
+                                <h4><i class="fa-solid fa-credit-card"></i> Visa ending in 1234</h4>
+                                <p>Exp: 04/27 | Default billing method</p>
+                            </div>
+                            <button class="change-btn">Change</button>
+                        </div>
+
+                        <!-- Add New Payment Option -->
+                        <div class="card mt-3">
+                            <button onclick="shwoPaymentMethodPopup()"
+                                class="text-decoration-underline bg-transparent border-0 py-2"
+                                style=" text-align: left; margin-left: 17px;"><span><i
+                                        class="fa-solid fa-plus"></i></span> Add a new payment method</button>
+                        </div>
+
+
+                        <div class="popup-container" id="paymentMethodPopupContainer">
+                            <div class="popup" id="popupStep1">
+                                <span class="close-btn" onclick="closePaymentMethodPopup()">&times;</span>
+                                <h5 class="fs-4">Choose a Card</h5>
+                                <div class="card-options">
+                                    <button onclick="selectCard('Visa')">Visa</button>
+                                    <button onclick="selectCard('MasterCard')">MasterCard</button>
+                                    <button onclick="selectCard('PayPal')">PayPal</button>
+                                </div>
+                            </div>
+
+                            <div class="popup" id="popupStep2" style="display: none;">
+                                <span class="close-btn" onclick="closePaymentMethodPopup()">&times;</span>
+                                <h5 id="selectedCardTitle" class="fs-4">Add Card Details</h5>
+                                <div class="form-section" id="cardForm">
+                                    <input type="text" class="form-control" placeholder="Cardholder Name" />
+                                    <input type="text" class="form-control" placeholder="Card Number" />
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" placeholder="MM/YY" />
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" placeholder="CVV" />
+                                        </div>
+                                    </div>
+                                    <button class="button-1 mt-2">Submit</button>
+                                    <button class="back-btn" onclick="goBack()">← Back</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Payment option adding section ends here -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer section starts here -->
+    <div class="footer-section section-bg">
+        <div class="container">
+            <div>
+                <img src="./images/bsam-logo.png" alt="">
+                <p>Get deliveries with Bsamcart</p>
+            </div>
+            <div>
+                <h4>Top categories</h4>
+                <ul>
+                    <li>Men</li>
+                    <li>Women</li>
+                    <li>Electronics</li>
+                    <li>Accessories</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Additional links</h4>
+                <ul>
+                    <li>About Us</li>
+                    <li>Terms & Conditions</li>
+                    <li>Returns</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Get in Touch</h4>
+                <p>Email: hello@quickcart.com</p>
+                <p>Phone: +44 123 456 7890</p>
+                <div class="social-icons">
+                    <a href="#" class="icon facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="icon twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 BSAMCart. All Rights Reserved.
+        </div>
+    </div>
+    <!-- Footer section ends here -->
+
+    <!-- Scripts  -->
+
+    <!-- Bootstrap script -->
+    <script src="./js/bootstrap.js"></script>
+
+    <!-- Jquery cdn  -->
+    <script src="./js/jquery.js"></script>
+
+    <!-- Slick Slider cdn  -->
+    <script src="./js/slick-slider.js"></script>
+
+    <!-- custom script  -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
