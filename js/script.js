@@ -9,6 +9,50 @@ function closeMenuBar() {
   document.getElementById('overlay').classList.remove('active')
 }
 
+// Chat form
+document.getElementById("toggleForm").addEventListener("click", function () {
+  const box = document.getElementById("chatBox");
+  const toggleForm = document.getElementById("toggleForm");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+  toggleForm.style.display = "none";
+
+  box.addEventListener("click", function () {
+    toggleForm.style.display = "block";
+  });
+});
+
+
+//  const chatBox = document.getElementById("chatBox");
+
+// chatBox.addEventListener("click", function () {
+//   const toggleForm = document.getElementById("toggleForm");
+//   toggleForm.style.display = "block";
+// });
+
+
+function showChatForm() {
+  const form = document.getElementById("chatForm");
+  form.style.display = form.style.display === "block" ? "none" : "block";
+}
+
+function startChat() {
+  const name = document.getElementById("userName").value.trim();
+  const email = document.getElementById("userEmail").value.trim();
+
+  if (!name || !email) {
+    alert("Please enter your name and email.");
+    return;
+  }
+
+  const message = `Hello, my name is ${name} and my email is ${email}. I'd like to chat.`;
+  const whatsappURL = `https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(
+    message
+  )}`;
+
+  window.open(whatsappURL, "_blank");
+}
+
+
 // Profile menu panel
 function openProfileSideBar() {
   document.getElementById('profile').classList.add('active')
