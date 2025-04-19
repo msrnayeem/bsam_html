@@ -490,7 +490,36 @@
   <!-- header ends here  -->
 
   <!---------------------------------------- Index page body codes starts here  ---------------------------------------->
+ <!-- WhatsApp Floating Button -->
+ <div class="chat-widget">
+  <!-- WhatsApp Icon -->
+  <div class="chat-icon" id="toggleForm">
+    <img src="images/help.png" style="color:#099242" alt="Chat Icon">
+  </div>
 
+  <!-- Chat Box -->
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header">
+      <span>Hi there 👋</span>
+      <span class="close-btn" style="cursor: pointer;" onclick="document.getElementById('chatBox').style.display = 'none';">&#10006;</span>
+    </div>
+    <div class="chat-content">
+      <p>Need help? Search our help center for answers or start a conversation:</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for answers">
+        <button>🔍</button>
+      </div>
+      <button class="new-convo-btn" onclick="showChatForm()">➤ New Conversation</button>
+      
+      <!-- Hidden Chat Form -->
+      <div id="chatForm" style="display: none; margin-top: 15px;">
+        <input type="text" id="userName" placeholder="Name">
+        <input type="email" id="userEmail" placeholder="Email">
+        <button onclick="startChat()">➤ Start Chat</button>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- Promotional category section starts here  -->
   <div class="category-section my-1 w-100">
     <div class="container">
