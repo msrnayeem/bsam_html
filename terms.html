@@ -25,11 +25,6 @@
     <link rel="stylesheet" href="./css/responsive.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
         .social-btn {
             display: flex;
             align-items: center;
@@ -128,15 +123,13 @@
             max-width: unset;
         }
 
-        .header-terms {
-            background-color: #f8f9fa;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            text-align: center;
+        .btn-link {
+            text-decoration: none;
+            color: black;
         }
 
-        .content-section {
-            padding: 2rem;
+        #modalAuth #authForm {
+            text-align: left;
         }
     </style>
 </head>
@@ -156,7 +149,8 @@
         </div>
 
 
-        <button class="button-1" data-bs-toggle="modal" data-bs-target="#modalAuth" onclick="setFormType('signIn')">Sign
+        <button class="button-1 sign-in-btn" data-bs-toggle="modal" data-bs-target="#modalAuth"
+            onclick="setFormType('signIn')">Sign
             In</button>
 
 
@@ -173,15 +167,25 @@
                             <!-- Sign Up Form -->
                             <div id="signUpForm">
                                 <div class="mb-3">
-                                    <label for="floatingInput" class="form-label">Enter your email to sign up</label>
+                                    <label for="floatingInput" class="form-label">Enter your email</label>
                                     <input type="email" class="form-control custom-input" id="floatingInput"
                                         placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="floatingPassword" class="form-label">Create password</label>
+                                    <input type="password" class="form-control custom-input" id="floatingPassword"
+                                        placeholder="Password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="floatingConfirmPassword" class="form-label">Confirm password</label>
+                                    <input type="password" class="form-control custom-input"
+                                        id="floatingConfirmPassword" placeholder="Confirm Password">
                                 </div>
                                 <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign
                                     Up</button>
                                 <p class="text-body-secondary mt-1">
                                     By clicking Sign up, you agree to our
-                                    <a href="#">Terms of Service</a>,
+                                    <a href="terms.html">Terms of Service</a>,
                                     <a href="#">Privacy Policy</a> &
                                     <a href="#">Health Data Notice</a>.
                                 </p>
@@ -190,10 +194,20 @@
                             <!-- Sign In Form (hidden initially) -->
                             <div id="signInForm" style="display: none;">
                                 <div class="mb-3">
-                                    <label for="floatingInputSignin" class="form-label">Enter your email to sign
-                                        in</label>
+                                    <label for="floatingInputSignin" class="form-label">Enter your email</label>
                                     <input type="email" class="form-control custom-input" id="floatingInputSignin"
                                         placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="floatingPasswordSignin" class="form-label">Enter your password</label>
+                                    <input type="password" class="form-control custom-input" id="floatingPasswordSignin"
+                                        placeholder="Password">
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    <a href="#" class="float-end text-decoration-none"
+                                        onclick="setFormType('forgotPassword'); return false;">Forgot Password?</a>
                                 </div>
                                 <button class="w-100 mb-4 btn btn-lg rounded-3 btn-primary" type="submit">Sign
                                     In</button>
@@ -223,45 +237,67 @@
                                 </div>
                             </div>
 
-                            <hr class="my-4">
+                            <!-- Add this to your existing modal body, after the Sign In form -->
+                            <div id="forgotPasswordForm" style="display: none;">
+                                <p class="mb-3">Enter your email address and we'll send you a link to reset your
+                                    password.</p>
+                                <div class="mb-3">
+                                    <label for="forgotPasswordEmail" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control custom-input" id="forgotPasswordEmail"
+                                        placeholder="Enter your email">
+                                </div>
+                                <button class="w-100 mb-3 btn btn-lg rounded-3 btn-primary" type="button"
+                                    onclick="sendResetLink()">Send
+                                    Reset Link</button>
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-link" onclick="setFormType('signIn')">
+                                        Back to Sign In
+                                    </button>
+                                </div>
+                            </div>
 
-                            <!-- button start -->
-                            <button class="social-btn google w-100 mb-2 rounded-3" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 48 48">
-                                    <path fill="#fbc02d"
-                                        d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.7 1.1 7.8 3l5.7-5.7C33.2 6.1 28.8 4 24 4c-11 0-20 9-20 20 0-1.3-.1-2.5-.4-3.5z" />
-                                    <path fill="#e53935"
-                                        d="M6.3 14.7l6.6 4.8C14.2 15.2 18.7 12 24 12c3 0 5.7 1.1 7.8 3l5.7-5.7C33.2 6.1 28.8 4 24 4c-7.6 0-14 4.2-17.7 10.7z" />
-                                    <path fill="#4caf50"
-                                        d="M24 44c5.9 0 11-2.3 14.8-6l-6.9-5.7c-2 1.6-4.5 2.7-7.9 2.7-5.2 0-9.6-3.3-11.2-8l-6.6 5c3.7 6.5 10.7 11 18.8 11z" />
-                                    <path fill="#1565c0"
-                                        d="M43.6 20.5H42V20H24v8h11.3c-1 2.7-2.9 4.9-5.4 6.4l.1.1 6.9 5.7c-.5.5 7.1-5.2 7.1-14.7 0-1.3-.1-2.5-.3-3.5z" />
-                                </svg>
-                                <span>Sign up with Google</span>
-                            </button>
-
-                            <button class="social-btn facebook w-100 mb-2 rounded-3" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 320 512">
-                                    <path fill="white"
-                                        d="M279.14 288l14.22-92.66h-88.91V127.43c0-25.35 12.42-50.06 52.24-50.06H293V6.26S275.8 0 256.36 0c-73.22 0-121.07 44.38-121.07 124.72V195.3H96v92.7h39.29V512h96.22V288z" />
-                                </svg>
-                                <span>Sign up with Facebook</span>
-                            </button>
-
-                            <button class="social-btn phone w-100 mb-2 rounded-3" type="button"
-                                id="togglePhoneEmailBtn">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512">
-                                    <path fill="white"
-                                        d="M391.9 330.7c-13.9-6.5-29.9-2.3-39.3 9.4l-27.5 33.4c-47.4-25.1-86-63.6-111.1-111.1l33.4-27.5c11.7-9.3 15.9-25.4 9.4-39.3L227.1 92.7C220.5 78 206.2 68.3 190.2 68.3h-61.7C114.4 68.3 100.3 82.4 100.3 100.2c0 204.3 165.5 369.7 369.7 369.7 17.9 0 31.9-14.1 31.9-31.9v-61.7c0-16-9.7-30.3-24.4-36.9l-84.9-36.7z" />
-                                </svg>
-                                <span id="togglePhoneEmailBtnText">Continue with Phone</span>
-                            </button>
-                            <!-- button end -->
-
-                            <div class="text-center mt-3">
-                                <button type="button" class="btn btn-link" id="toggleButton" onclick="toggleForm()">
-                                    Already have an account? Sign In
+                            <!-- Wrap the social buttons and divider in a container -->
+                            <div id="modal-buttons-section">
+                                <hr class="my-4">
+                                <!-- button start -->
+                                <button class="social-btn google w-100 mb-2 rounded-3" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 48 48">
+                                        <path fill="#fbc02d"
+                                            d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.7 1.1 7.8 3l5.7-5.7C33.2 6.1 28.8 4 24 4c-11 0-20 9-20 20 0-1.3-.1-2.5-.4-3.5z" />
+                                        <path fill="#e53935"
+                                            d="M6.3 14.7l6.6 4.8C14.2 15.2 18.7 12 24 12c3 0 5.7 1.1 7.8 3l5.7-5.7C33.2 6.1 28.8 4 24 4c-7.6 0-14 4.2-17.7 10.7z" />
+                                        <path fill="#4caf50"
+                                            d="M24 44c5.9 0 11-2.3 14.8-6l-6.9-5.7c-2 1.6-4.5 2.7-7.9 2.7-5.2 0-9.6-3.3-11.2-8l-6.6 5c3.7 6.5 10.7 11 18.8 11z" />
+                                        <path fill="#1565c0"
+                                            d="M43.6 20.5H42V20H24v8h11.3c-1 2.7-2.9 4.9-5.4 6.4l.1.1 6.9 5.7c-.5.5 7.1-5.2 7.1-14.7 0-1.3-.1-2.5-.3-3.5z" />
+                                    </svg>
+                                    <span>Sign up with Google</span>
                                 </button>
+
+                                <button class="social-btn facebook w-100 mb-2 rounded-3" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 320 512">
+                                        <path fill="white"
+                                            d="M279.14 288l14.22-92.66h-88.91V127.43c0-25.35 12.42-50.06 52.24-50.06H293V6.26S275.8 0 256.36 0c-73.22 0-121.07 44.38-121.07 124.72V195.3H96v92.7h39.29V512h96.22V288z" />
+                                    </svg>
+                                    <span>Sign up with Facebook</span>
+                                </button>
+
+                                <button class="social-btn phone w-100 mb-2 rounded-3" type="button"
+                                    id="togglePhoneEmailBtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512">
+                                        <path fill="white"
+                                            d="M391.9 330.7c-13.9-6.5-29.9-2.3-39.3 9.4l-27.5 33.4c-47.4-25.1-86-63.6-111.1-111.1l33.4-27.5c11.7-9.3 15.9-25.4 9.4-39.3L227.1 92.7C220.5 78 206.2 68.3 190.2 68.3h-61.7C114.4 68.3 100.3 82.4 100.3 100.2c0 204.3 165.5 369.7 369.7 369.7 17.9 0 31.9-14.1 31.9-31.9v-61.7c0-16-9.7-30.3-24.4-36.9l-84.9-36.7z" />
+                                    </svg>
+                                    <span id="togglePhoneEmailBtnText">Continue with Phone</span>
+                                </button>
+                                <!-- button end -->
+
+                                <div class="text-center mt-3">
+                                    <button type="button" class="btn btn-link d-inline-block" id="toggleButton"
+                                        onclick="toggleForm()">
+                                        Already have an account? Sign In
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -271,15 +307,13 @@
 
         <div class="account-section">
             <div class="account-text" id="account-text" onclick="openDropdownOptions()">
-                Hello, Mr. X<br>
-                <b>Account & Lists <span><i class="fa-solid fa-circle-arrow-down"></i></span></b>
+                <span class="user-icon"><i class="fa-solid fa-circle-user"></i></span><br>
+                <b>Profile <span><i class="fa-solid fa-circle-arrow-down"></i></span></b>
 
                 <div class="dropdown-options" id="dropdown-options">
                     <ul>
                         <li><a href="account-setting.html">Account Setting</a></li>
-                        <li><a href="manage-address.html">Manage Address</a></li>
-                        <li><a href="#">Payment Setting</a></li>
-                        <li><a href="order-list.html">Order Lists</a></li>
+                        <li><a href="order-history.html">Order Lists</a></li>
                         <li><a href="wishlist.html">Wishlist</a></li>
                         <li><a href="notifications.html">Notifications</a></li>
                         <li><a href="#">Logout</a></li>
@@ -404,8 +438,10 @@
     <!-- mobile account section starts -->
     <div class="mobile-account-section">
         <div class="icon">
-            <span><i class="fa-solid fa-house"></i></span>
-            <p class="mb-0">Home</p>
+            <a class="text-decoration-none text-black" href="#">
+                <span><i class="fa-solid fa-house"></i></span>
+                <p class="mb-0">Home</p>
+            </a>
         </div>
 
         <div class="icon">
@@ -415,9 +451,9 @@
             </a>
         </div>
 
-        <div class="icon">
+        <div class="icon" data-bs-toggle="modal" data-bs-target="#modalAuth" onclick="setFormType('signIn')">
             <span><i class="fa-solid fa-right-to-bracket"></i></span>
-            <p class="mb-0">Login/Signup</p>
+            <p class="mb-0">Sign In</p>
         </div>
 
         <div class="icon" onclick="openProfileSideBar()">
@@ -440,10 +476,8 @@
         </div>
         <ul>
             <li><a href="account-setting.html">Account Setting</a></li>
-            <li><a href="manage-address.html">Manage Address</a></li>
-            <li><a href="#">Payment Setting</a></li>
             <li><a href="order-list.html">Order Lists</a></li>
-            <li><a href="#">Notifications</a></li>
+            <li><a href="notifications.html">Notifications</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
     </div>
@@ -456,9 +490,9 @@
             <span onclick="closeMenuBar()"><i class="fa-solid fa-xmark"></i></span>
         </div>
         <ul>
-            <li><a href="#">Cake</a></li>
-            <li><a href="#">Burger</a></li>
-            <li><a href="#">Noodles</a></li>
+            <li><a href="product.html">Cake</a></li>
+            <li><a href="product.html">Burger</a></li>
+            <li><a href="product.html">Noodles</a></li>
             <li><a href="#">Vegetables</a></li>
             <li><a href="#">Oil</a></li>
 
@@ -792,6 +826,108 @@
 
     <!-- custom script  -->
     <script src="./js/script.js"></script>
+
+    <script>
+        function setFormType(type) {
+            if (type === 'signIn') {
+                document.getElementById('signUpForm').style.display = 'none';
+                document.getElementById('signInForm').style.display = 'block';
+                document.getElementById('continueWithMobile').style.display = 'none';
+                document.getElementById('forgotPasswordForm').style.display = 'none';
+                document.getElementById('modalTitle').textContent = 'Sign In';
+                document.getElementById('toggleButton').textContent = "Don't have an account? Sign Up";
+                document.getElementById('toggleButton').style.display = 'block';
+                document.getElementById('modal-buttons-section').style.display = 'block';
+            } else if (type === 'signUp') {
+                document.getElementById('signUpForm').style.display = 'block';
+                document.getElementById('signInForm').style.display = 'none';
+                document.getElementById('continueWithMobile').style.display = 'none';
+                document.getElementById('forgotPasswordForm').style.display = 'none';
+                document.getElementById('modalTitle').textContent = 'Sign Up';
+                document.getElementById('toggleButton').textContent = 'Already have an account? Sign In';
+                document.getElementById('toggleButton').style.display = 'block';
+                document.getElementById('modal-buttons-section').style.display = 'block';
+            } else if (type === 'mobile') {
+                document.getElementById('signUpForm').style.display = 'none';
+                document.getElementById('signInForm').style.display = 'none';
+                document.getElementById('continueWithMobile').style.display = 'block';
+                document.getElementById('forgotPasswordForm').style.display = 'none';
+                document.getElementById('modalTitle').textContent = 'Continue with Phone';
+                document.getElementById('toggleButton').style.display = 'none';
+                document.getElementById('modal-buttons-section').style.display = 'block';
+            } else if (type === 'forgotPassword') {
+                document.getElementById('signUpForm').style.display = 'none';
+                document.getElementById('signInForm').style.display = 'none';
+                document.getElementById('continueWithMobile').style.display = 'none';
+                document.getElementById('forgotPasswordForm').style.display = 'block';
+                document.getElementById('modalTitle').textContent = 'Forgot Password';
+                document.getElementById('toggleButton').style.display = 'none';
+                document.getElementById('modal-buttons-section').style.display = 'none';
+            }
+        }
+
+        function sendResetLink() {
+            const email = document.getElementById('forgotPasswordEmail').value;
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            alert(`Password reset link sent to ${email}. Please check your inbox.`);
+            setFormType('signIn');
+        }
+
+        function toggleForm() {
+            const signInFormVisible = document.getElementById('signInForm').style.display !== 'none';
+            setFormType(signInFormVisible ? 'signUp' : 'signIn');
+        }
+
+        function selectCountryCode(element) {
+            const code = element.getAttribute('data-code');
+            const flag = element.getAttribute('data-flag');
+            document.getElementById('countryCodeBtn').textContent = `${flag} ${code}`;
+            document.getElementById('countryCode').value = code;
+
+            document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        $(document).ready(function () {
+            $('#togglePhoneEmailBtn').on('click', function () {
+                const isMobileVisible = $('#continueWithMobile').is(':visible');
+                const toggleText = $('#togglePhoneEmailBtnText');
+
+                if (!isMobileVisible) {
+                    setFormType('mobile');
+                    toggleText.text('Continue with Email');
+                } else {
+                    setFormType('signUp');
+                    toggleText.text('Continue with Phone');
+                    $('#toggleButton').show();
+                }
+            });
+
+            const modalAuth = document.getElementById('modalAuth');
+            const signInButton = document.querySelector('button[data-bs-target="#modalAuth"]');
+
+            $(modalAuth).on('hide.bs.modal', function (event) {
+                setTimeout(function () {
+                    signInButton.focus();
+                }, 10);
+            });
+
+            const closeButton = modalAuth.querySelector('.btn-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', function () {
+                    setTimeout(function () {
+                        signInButton.focus();
+                    }, 10);
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

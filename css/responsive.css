@@ -67,6 +67,15 @@
         display: none;
     }
 
+    .sign-in-btn{
+      display: none;
+    }
+
+    .chat-icon{
+      position: relative;
+      bottom: 55px;
+    }
+
     .mobile-account-section {
         display: flex;
         z-index: 11;
