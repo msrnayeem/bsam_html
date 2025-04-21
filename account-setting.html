@@ -2,247 +2,496 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bsamcart</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bsamcart</title>
 
-    <!-- Favicon link  -->
-    <link rel="icon" href="./images/bsam-logo.png" type="image">
+  <!-- Favicon link  -->
+  <link rel="icon" href="./images/bsam-logo.png" type="image">
 
-    <!-- Bootstrap css  -->
-    <link rel="stylesheet" href="./css/bootstrap.css">
+  <!-- Bootstrap css  -->
+  <link rel="stylesheet" href="./css/bootstrap.css">
 
-    <!-- Font Awesome cdn  -->
-    <!-- <link rel="stylesheet" href="./css/fontawesome.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <!-- Font Awesome cdn  -->
+  <!-- <link rel="stylesheet" href="./css/fontawesome.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- Slick Slider cdn  -->
-    <link rel="stylesheet" href="./css/slick-slider.css">
-    <!-- <link rel="stylesheet" href="./css/slick-theme.css"> -->
+  <!-- Slick Slider cdn  -->
+  <link rel="stylesheet" href="./css/slick-slider.css">
+  <!-- <link rel="stylesheet" href="./css/slick-theme.css"> -->
 
-    <!-- styling css  -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/responsive.css">
+  <!-- styling css  -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 10px 16px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-btn>.icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .social-btn>span {
+      line-height: 1;
+    }
+
+    .social-btn.google {
+      background-color: white;
+      color: #000;
+      border: 1px solid #dadce0;
+    }
+
+    .social-btn.google:hover {
+      background-color: #f7f7f7;
+    }
+
+    .social-btn.facebook {
+      background-color: #1877F2;
+      color: white;
+    }
+
+    .social-btn.facebook:hover {
+      background-color: #145dc1;
+    }
+
+    .social-btn.phone {
+      background-color: #f57c00;
+      color: white;
+    }
+
+    .social-btn.phone:hover {
+      background-color: #e06c00;
+    }
+
+    .rounded-3 {
+      border-radius: 12px !important;
+    }
+
+    form>.custom-input {
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 1px solid #c6c6c6;
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    form>.custom-input:focus {
+      border-color: #999;
+      box-shadow: none;
+    }
+
+    form>.form-label {
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    form>.text-body-secondary {
+      font-size: 13px;
+      color: #555;
+      margin-top: 1px;
+    }
+
+    form>.text-body-secondary>a {
+      color: #2e7d32;
+      text-decoration: none;
+    }
+
+    form>.text-body-secondary>a:hover {
+      text-decoration: underline;
+    }
+
+    form>.btn-lg {
+      --bs-btn-padding-y: 0.2rem;
+    }
+
+    .newModal {
+      max-width: unset;
+    }
+
+    .btn-link {
+      text-decoration: none;
+      color: black;
+    }
+
+    #modalAuth #authForm {
+      text-align: left;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- header starts here  -->
-    <div class="top-header">
-        <a href="#" class="logo-top-a"><img src="./images/bsam-logo.png" alt="BSAM Logo" class="logo logo-top"></a>
-        <div class="logo-section">
-            <span onclick="openMenuBar()"><i class="fa-solid fa-bars"></i></span>
-            <a href="#"><img src="./images/bsam-logo.png" alt="BSAM Logo" class="logo"></a>
-        </div>
+  <!-- header starts here  -->
+  <div class="top-header">
+    <a href="#" class="logo-top-a"><img src="./images/bsam-logo.png" alt="BSAM Logo" class="logo logo-top"></a>
+    <div class="logo-section">
+      <span onclick="openMenuBar()"><i class="fa-solid fa-bars"></i></span>
+      <a href="#"><img src="./images/bsam-logo.png" alt="BSAM Logo" class="logo"></a>
+    </div>
 
-        <div class="search-box">
-            <input type="text" placeholder="Search bsamcart.ca">
-            <button><span><i class="fa-solid fa-magnifying-glass"></i></span></button>
-        </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search bsamcart.ca">
+      <button><span><i class="fa-solid fa-magnifying-glass"></i></span></button>
+    </div>
 
-        <div class="account-section">
-            <div class="account-text" id="account-text" onclick="openDropdownOptions()">
-                Hello, Mr. X<br>
-                <b>Account & Lists <span><i class="fa-solid fa-circle-arrow-down"></i></span></b>
 
-                <div class="dropdown-options" id="dropdown-options">
-                    <ul>
-                        <li><a href="account-setting.html">Account Setting</a></li>
-                        <li><a href="#">Manage Address</a></li>
-                        <li><a href="#">Payment Setting</a></li>
-                        <li><a href="#">Order Lists</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                        <li><a href="#">Notifications</a></li>
-                        <li><a href="#">Logout</a></li>
-                    </ul>
+    <button class="button-1 sign-in-btn" data-bs-toggle="modal" data-bs-target="#modalAuth" onclick="setFormType('signIn')">Sign
+      In</button>
+
+
+    <div class="modal fade" id="modalAuth" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+      <div class="modal-dialog custom-modal-width">
+        <div class="modal-content rounded-4 shadow newModal">
+          <div class="modal-header p-1 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2" id="modalTitle">Sign Up</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body px-1 pt-0">
+            <form id="authForm">
+              <!-- Sign Up Form -->
+              <div id="signUpForm">
+                <div class="mb-3">
+                  <label for="floatingInput" class="form-label">Enter your email</label>
+                  <input type="email" class="form-control custom-input" id="floatingInput" placeholder="Email">
                 </div>
-            </div>
-            <div class="cart-icon" onclick="openCart()">
-                <span class="cart"><i class="fa-solid fa-cart-shopping"></i></span>
-                <span class="cart-count">1</span>
-
-
-            </div>
-            <div class="sidebar cartSideBar" id="cartSideBar">
-                <div class="cart-title">
-                    <p class="items-quantity mb-0">
-                        4 items
-                    </p>
-                    <span onclick="closeCart()" class="close-cart"><i class="fa-solid fa-xmark"></i></span>
+                <div class="mb-3">
+                  <label for="floatingPassword" class="form-label">Create password</label>
+                  <input type="password" class="form-control custom-input" id="floatingPassword" placeholder="Password">
                 </div>
-                <div class="cart-items">
-                    <div style="overflow-x: auto;">
-                        <table class="table table-striped text-center" style="min-width: 600px;">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
-                                    </td>
-                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
-                                    <td>
-                                        <div class="qty-buttons">
-                                            <button class="decrease">-</button>
-                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
-                                            <button class="increase">+</button>
-                                        </div>
-                                    </td>
-                                    <td>800</td>
-                                </tr>
-                                <tr>
-                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
-                                    </td>
-                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
-                                    <td>
-                                        <div class="qty-buttons">
-                                            <button class="decrease">-</button>
-                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
-                                            <button class="increase">+</button>
-                                        </div>
-                                    </td>
-                                    <td>800</td>
-                                </tr>
-                                <tr>
-                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
-                                    </td>
-                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
-                                    <td>
-                                        <div class="qty-buttons">
-                                            <button class="decrease">-</button>
-                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
-                                            <button class="increase">+</button>
-                                        </div>
-                                    </td>
-                                    <td>800</td>
-                                </tr>
-                                <tr>
-                                    <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo">
-                                    </td>
-                                    <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
-                                    <td>
-                                        <div class="qty-buttons">
-                                            <button class="decrease">-</button>
-                                            <input type="text" class="qunatityValue" value="3" min="1" disabled>
-                                            <button class="increase">+</button>
-                                        </div>
-                                    </td>
-                                    <td>800</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Total</td>
-                                    <td>3200 Tk.</td>
-                                </tr>
+                <div class="mb-3">
+                  <label for="floatingConfirmPassword" class="form-label">Confirm password</label>
+                  <input type="password" class="form-control custom-input" id="floatingConfirmPassword"
+                    placeholder="Confirm Password">
+                </div>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign Up</button>
+                <p class="text-body-secondary mt-1">
+                  By clicking Sign up, you agree to our
+                  <a href="terms.html">Terms of Service</a>,
+                  <a href="#">Privacy Policy</a> &
+                  <a href="#">Health Data Notice</a>.
+                </p>
+              </div>
 
-                            </tbody>
-                        </table>
+              <!-- Sign In Form (hidden initially) -->
+              <div id="signInForm" style="display: none;">
+                <div class="mb-3">
+                  <label for="floatingInputSignin" class="form-label">Enter your email</label>
+                  <input type="email" class="form-control custom-input" id="floatingInputSignin" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                  <label for="floatingPasswordSignin" class="form-label">Enter your password</label>
+                  <input type="password" class="form-control custom-input" id="floatingPasswordSignin"
+                    placeholder="Password">
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">Remember me</label>
+                  <a href="#" class="float-end text-decoration-none"
+                    onclick="setFormType('forgotPassword'); return false;">Forgot Password?</a>
+                </div>
+                <button class="w-100 mb-4 btn btn-lg rounded-3 btn-primary" type="submit">Sign In</button>
+              </div>
+
+              <!-- continue with mobile -->
+              <div id="continueWithMobile" style="display: none;">
+                <div class="mb-3">
+                  <label for="phoneNumber" class="form-label">Phone Number</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" id="countryCodeBtn">🇺🇸 +1</button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" data-code="+1" data-flag="🇨🇦"
+                          onclick="selectCountryCode(this)">🇨🇦 Canada +1</a>
+                      </div>
                     </div>
+                    <input type="hidden" id="countryCode" name="countryCode" value="+1">
+                    <input type="tel" class="form-control custom-input" id="phoneNumber" placeholder="Phone number"
+                      required>
+                  </div>
+                  <div class="form-text text-body-secondary text-muted">We’ll send a verification code
+                    to this
+                    number</div>
                 </div>
+              </div>
 
-                <div class="check-out-btn text-end">
-
-                    <a href="check-out.html" class="button-1 text-decoration-none fs-5 mb-3 mx-3">Proceed to
-                        checkout</a>
+              <!-- Add this to your existing modal body, after the Sign In form -->
+              <div id="forgotPasswordForm" style="display: none;">
+                <p class="mb-3">Enter your email address and we'll send you a link to reset your password.</p>
+                <div class="mb-3">
+                  <label for="forgotPasswordEmail" class="form-label">Email Address</label>
+                  <input type="email" class="form-control custom-input" id="forgotPasswordEmail"
+                    placeholder="Enter your email">
                 </div>
+                <button class="w-100 mb-3 btn btn-lg rounded-3 btn-primary" type="button" onclick="sendResetLink()">Send
+                  Reset Link</button>
+                <div class="text-center mt-3">
+                  <button type="button" class="btn btn-link" onclick="setFormType('signIn')">
+                    Back to Sign In
+                  </button>
+                </div>
+              </div>
 
-            </div>
+              <!-- Wrap the social buttons and divider in a container -->
+              <div id="modal-buttons-section">
+                <hr class="my-4">
+                <!-- button start -->
+                <button class="social-btn google w-100 mb-2 rounded-3" type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 48 48">
+                    <path fill="#fbc02d"
+                      d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.7 1.1 7.8 3l5.7-5.7C33.2 6.1 28.8 4 24 4c-11 0-20 9-20 20 0-1.3-.1-2.5-.4-3.5z" />
+                    <path fill="#e53935"
+                      d="M6.3 14.7l6.6 4.8C14.2 15.2 18.7 12 24 12c3 0 5.7 1.1 7.8 3l5.7-5.7C33.2 6.1 28.8 4 24 4c-7.6 0-14 4.2-17.7 10.7z" />
+                    <path fill="#4caf50"
+                      d="M24 44c5.9 0 11-2.3 14.8-6l-6.9-5.7c-2 1.6-4.5 2.7-7.9 2.7-5.2 0-9.6-3.3-11.2-8l-6.6 5c3.7 6.5 10.7 11 18.8 11z" />
+                    <path fill="#1565c0"
+                      d="M43.6 20.5H42V20H24v8h11.3c-1 2.7-2.9 4.9-5.4 6.4l.1.1 6.9 5.7c-.5.5 7.1-5.2 7.1-14.7 0-1.3-.1-2.5-.3-3.5z" />
+                  </svg>
+                  <span>Sign up with Google</span>
+                </button>
+
+                <button class="social-btn facebook w-100 mb-2 rounded-3" type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 320 512">
+                    <path fill="white"
+                      d="M279.14 288l14.22-92.66h-88.91V127.43c0-25.35 12.42-50.06 52.24-50.06H293V6.26S275.8 0 256.36 0c-73.22 0-121.07 44.38-121.07 124.72V195.3H96v92.7h39.29V512h96.22V288z" />
+                  </svg>
+                  <span>Sign up with Facebook</span>
+                </button>
+
+                <button class="social-btn phone w-100 mb-2 rounded-3" type="button" id="togglePhoneEmailBtn">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512">
+                    <path fill="white"
+                      d="M391.9 330.7c-13.9-6.5-29.9-2.3-39.3 9.4l-27.5 33.4c-47.4-25.1-86-63.6-111.1-111.1l33.4-27.5c11.7-9.3 15.9-25.4 9.4-39.3L227.1 92.7C220.5 78 206.2 68.3 190.2 68.3h-61.7C114.4 68.3 100.3 82.4 100.3 100.2c0 204.3 165.5 369.7 369.7 369.7 17.9 0 31.9-14.1 31.9-31.9v-61.7c0-16-9.7-30.3-24.4-36.9l-84.9-36.7z" />
+                  </svg>
+                  <span id="togglePhoneEmailBtnText">Continue with Phone</span>
+                </button>
+                <!-- button end -->
+
+                <div class="text-center mt-3">
+                  <button type="button" class="btn btn-link d-inline-block" id="toggleButton" onclick="toggleForm()">
+                    Already have an account? Sign In
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- delete confirmation pop up starts here  -->
-    <div id="deleteModal" class="modal">
-        <div class="modal-content">
-            <p>Do you want to delete this product?</p>
-            <div class="modal-buttons">
-                <button id="confirmDelete" class="btn btn-danger">Yes</button>
-                <button id="cancelDelete" class="btn btn-secondary">No</button>
-            </div>
-        </div>
-    </div>
+    <div class="account-section">
+      <div class="account-text" id="account-text" onclick="openDropdownOptions()">
+        <span class="user-icon"><i class="fa-solid fa-circle-user"></i></span><br>
+        <b>Profile <span><i class="fa-solid fa-circle-arrow-down"></i></span></b>
 
-    <!-- success message -->
-    <div id="successMessage" class="success-toast">Product deleted successfully!</div>
-
-    <!-- delete confirmation pop up ends here  -->
-
-    <!-- mobile account section starts -->
-    <div class="mobile-account-section">
-        <div class="icon">
-            <span><i class="fa-solid fa-house"></i></span>
-            <p class="mb-0">Home</p>
-        </div>
-
-        <div class="icon">
-            <span><i class="fa-regular fa-heart"></i></span>
-            <p class="mb-0">Wishlist</p>
-        </div>
-
-        <div class="icon">
-            <span><i class="fa-solid fa-right-to-bracket"></i></span>
-            <p class="mb-0">Login/Signup</p>
-        </div>
-
-        <div class="icon" onclick="openProfileSideBar()">
-            <span><i class="fa-solid fa-user"></i></span>
-            <p class="mb-0">Profile</p>
-        </div>
-
-
-    </div>
-    <!-- mobile account section ends -->
-
-
-    <!-- Account side bar section starts here -->
-    <div class="sidebar profile" id="profile">
-        <div class="d-flex justify-content-between align-items-center" style="background: beige;padding:10px 20px;">
-            <span onclick="closeProfileSideBar()"><i class="fa-solid fa-xmark"></i></span>
-            <div class="profile-picture">
-                <img src="" alt="">
-            </div>
-        </div>
-        <ul>
-            <li><a href="#">Account Setting</a></li>
-            <li><a href="#">Manage Address</a></li>
-            <li><a href="#">Payment Setting</a></li>
-            <li><a href="#">Order Lists</a></li>
-            <li><a href="#">Wishlist</a></li>
-            <li><a href="#">Notifications</a></li>
+        <div class="dropdown-options" id="dropdown-options">
+          <ul>
+            <li><a href="account-setting.html">Account Setting</a></li>
+            <li><a href="order-history.html">Order Lists</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="notifications.html">Notifications</a></li>
             <li><a href="#">Logout</a></li>
-        </ul>
-    </div>
-    <!-- Account side bar section ends here -->
-
-    <!-- Side category bar section starts here  -->
-    <div class="sidebar sideMenu" id="sideMenu">
-        <div class="d-flex justify-content-between align-items-center" style="background: beige;padding:10px 20px;">
-            <h4>Categories</h4>
-            <span onclick="closeMenuBar()"><i class="fa-solid fa-xmark"></i></span>
+          </ul>
         </div>
-        <ul>
-            <li><a href="#">Cake</a></li>
-            <li><a href="#">Burger</a></li>
-            <li><a href="#">Noodles</a></li>
-            <li><a href="#">Vegetables</a></li>
-            <li><a href="#">Oil</a></li>
+      </div>
+      <div class="cart-icon" onclick="openCart()">
+        <span class="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+        <span class="cart-count">1</span>
 
-        </ul>
+
+      </div>
+      <div class="sidebar cartSideBar" id="cartSideBar">
+        <div class="cart-title">
+          <p class="items-quantity mb-0">
+            4 items
+          </p>
+          <span onclick="closeCart()" class="close-cart"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <div class="cart-items">
+          <div style="overflow-x: auto;">
+            <table class="table table-striped text-center" style="min-width: 600px;">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo"></td>
+                  <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                  <td>
+                    <div class="qty-buttons">
+                      <button class="decrease">-</button>
+                      <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                      <button class="increase">+</button>
+                    </div>
+                  </td>
+                  <td>800</td>
+                </tr>
+                <tr>
+                  <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo"></td>
+                  <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                  <td>
+                    <div class="qty-buttons">
+                      <button class="decrease">-</button>
+                      <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                      <button class="increase">+</button>
+                    </div>
+                  </td>
+                  <td>800</td>
+                </tr>
+                <tr>
+                  <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo"></td>
+                  <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                  <td>
+                    <div class="qty-buttons">
+                      <button class="decrease">-</button>
+                      <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                      <button class="increase">+</button>
+                    </div>
+                  </td>
+                  <td>800</td>
+                </tr>
+                <tr>
+                  <td><img style="max-width: 42px;" src="./images/apple.jpeg" alt="Product Photo"></td>
+                  <td><a href="#" class="text-decoration-none text-black"></a>Apple</a></td>
+                  <td>
+                    <div class="qty-buttons">
+                      <button class="decrease">-</button>
+                      <input type="text" class="qunatityValue" value="3" min="1" disabled>
+                      <button class="increase">+</button>
+                    </div>
+                  </td>
+                  <td>800</td>
+                </tr>
+                <tr class="py-2">
+
+                  <td colspan="2" class="text-start"><a href="check-out.html"
+                      class="button-1 text-decoration-none fs-5 mb-3 mx-3">Proceed to checkout</a></td>
+
+                  <td colspan="2" class="fw-bold text-end fs-5"> Total = 3200 Tk.</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="check-out-btn text-end">
+
+        </div>
+
+      </div>
     </div>
-    <!-- Side category bar section ends here  -->
+  </div>
+
+  <!-- delete confirmation pop up starts here  -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <p>Do you want to delete this product?</p>
+      <div class="modal-buttons">
+        <button id="confirmDelete" class="btn btn-danger">Yes</button>
+        <button id="cancelDelete" class="btn btn-secondary">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- success message -->
+  <div id="successMessage" class="success-toast">Product deleted successfully!</div>
+
+  <!-- delete confirmation pop up ends here  -->
+
+  <!-- mobile account section starts -->
+  <div class="mobile-account-section">
+    <div class="icon">
+      <a class="text-decoration-none text-black" href="#">
+        <span><i class="fa-solid fa-house"></i></span>
+        <p class="mb-0">Home</p>
+    </a>
+    </div>
+
+    <div class="icon">
+      <a href="wishlist.html" class="text-decoration-none text-black">
+        <span><i class="fa-regular fa-heart"></i></span>
+        <p class="mb-0">Wishlist</p>
+      </a>
+    </div>
+
+    <div class="icon" data-bs-toggle="modal" data-bs-target="#modalAuth" onclick="setFormType('signIn')">
+      <span><i class="fa-solid fa-right-to-bracket"></i></span>
+      <p class="mb-0">Sign In</p>
+    </div>
+
+    <div class="icon" onclick="openProfileSideBar()">
+      <span><i class="fa-solid fa-user"></i></span>
+      <p class="mb-0">Profile</p>
+    </div>
+
+
+  </div>
+  <!-- mobile account section ends -->
+
+
+  <!-- Account side bar section starts here -->
+  <div class="sidebar profile" id="profile">
+    <div class="d-flex justify-content-between align-items-center" style="background: beige;padding:10px 20px;">
+      <span onclick="closeProfileSideBar()"><i class="fa-solid fa-xmark"></i></span>
+      <div class="profile-picture">
+        <img src="" alt="">
+      </div>
+    </div>
+    <ul>
+      <li><a href="account-setting.html">Account Setting</a></li>
+      <li><a href="order-history.html">Order Lists</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+  <!-- Account side bar section ends here -->
+
+  <!-- Side category bar section starts here  -->
+  <div class="sidebar sideMenu" id="sideMenu">
+    <div class="d-flex justify-content-between align-items-center" style="background: beige;padding:10px 20px;">
+      <h4>Categories</h4>
+      <span onclick="closeMenuBar()"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    <ul>
+      <li><a href="product.html">Cake</a></li>
+      <li><a href="product.html">Burger</a></li>
+      <li><a href="product.html">Noodles</a></li>
+      <li><a href="#">Vegetables</a></li>
+      <li><a href="#">Oil</a></li>
+
+    </ul>
+  </div>
+  <!-- Side category bar section ends here  -->
 
 
 
-    <!-- overlay starts -->
-    <div class="overlay" id="overlay" onclick="closeMenuBar(); closeCart(), closeProfileSideBar()"></div>
-    <!-- overlay end -->
-    <!-- header ends here  -->
+  <!-- overlay starts -->
+  <div class="overlay" id="overlay" onclick="closeMenuBar(); closeCart(), closeProfileSideBar()"></div>
+  <!-- overlay end -->
+  <!-- header ends here  -->
 
-
+<!-- User profile page codes starts from here -->
     <div class="user-profile ">
         <div class="container">
             <div class="row">
@@ -456,62 +705,172 @@
         </div>
     </div>
 
-    <!-- Footer section starts here -->
-    <div class="footer-section section-bg">
-        <div class="container">
-            <div>
-                <img src="./images/bsam-logo.png" alt="">
-                <p>Get deliveries with Bsamcart</p>
-            </div>
-            <div>
-                <h4>Top categories</h4>
-                <ul>
-                    <li>Men</li>
-                    <li>Women</li>
-                    <li>Electronics</li>
-                    <li>Accessories</li>
-                </ul>
-            </div>
-            <div>
-                <h4>Additional links</h4>
-                <ul>
-                    <li>About Us</li>
-                    <li>Terms & Conditions</li>
-                    <li>Returns</li>
-                    <li>Contact</li>
-                </ul>
-            </div>
-            <div>
-                <h4>Get in Touch</h4>
-                <p>Email: hello@quickcart.com</p>
-                <p>Phone: +44 123 456 7890</p>
-                <div class="social-icons">
-                    <a href="#" class="icon facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="icon twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="icon instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
+    <!-- User profile page codes ends from here -->
+<!-- Footer section starts here -->
+<div class="footer-section section-bg">
+    <div class="container">
+      <div>
+        <img src="./images/bsam-logo.png" alt="">
+        <p>Get deliveries with Bsamcart</p>
+
+        <a href="#"><img src="images/playstore logo.webp" alt="Get our app from playstore"></a>
+        <a href="#"><img src="images/appstore.webp" alt="Get our app from playstore"></a>
+      </div>
+      <div>
+        <h4>Top categories</h4>
+        <ul>
+          <li><a href="#" class="text-decoration-none text-black hover-underline">Men</a></li>
+          <li><a href="#" class="text-decoration-none text-black hover-underline">Women</a></li>
+          <li><a href="#" class="text-decoration-none text-black hover-underline">Electronics</a></li>
+          <li><a href="#" class="text-decoration-none text-black hover-underline">Accessories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Additional links</h4>
+        <ul>
+          <li><a href="#" class="text-decoration-none text-black hover-underline">About Us</a></li>
+          <li><a href="terms.html" class="text-decoration-none text-black hover-underline">Terms & Conditions</a></li>
+          <li><a href="#" class="text-decoration-none text-black hover-underline">Returns</a></li>
+          <li><a href="#" class="text-decoration-none text-black hover-underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <a href="mailto:hello@bsamcart.com" class="text-decoration-none text-black">Email: hello@bsamcart.com</a>
+        <a href="tel:+44 123 456 7890" class="text-decoration-none text-black">Phone: +44 123 456 7890</a>
+        <div class="social-icons">
+          <a href="#" class="icon facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="icon twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="icon instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <div class="copyright">
-            &copy; 2025 BSAMCart. All Rights Reserved.
-        </div>
+      </div>
     </div>
-    <!-- Footer section ends here -->
+    <div class="copyright">
+      &copy; 2025 BSAMCart. All Rights Reserved.
+    </div>
+  </div>
+  <!-- Footer section ends here -->
 
-    <!-- Scripts  -->
 
-    <!-- Bootstrap script -->
-    <script src="./js/bootstrap.js"></script>
+  <!-- Scripts  -->
 
-    <!-- Jquery cdn  -->
-    <script src="./js/jquery.js"></script>
+  <!-- google location api -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 
-    <!-- Slick Slider cdn  -->
-    <script src="./js/slick-slider.js"></script>
+  <!-- Bootstrap script -->
+  <script src="./js/bootstrap.js"></script>
 
-    <!-- custom script  -->
-    <script src="./js/script.js"></script>
+  <!-- Jquery cdn  -->
+  <script src="./js/jquery.js"></script>
+
+  <!-- Slick Slider cdn  -->
+  <script src="./js/slick-slider.js"></script>
+
+  <!-- custom script  -->
+  <script src="./js/script.js"></script>
+  <script>
+    function setFormType(type) {
+      if (type === 'signIn') {
+        document.getElementById('signUpForm').style.display = 'none';
+        document.getElementById('signInForm').style.display = 'block';
+        document.getElementById('continueWithMobile').style.display = 'none';
+        document.getElementById('forgotPasswordForm').style.display = 'none';
+        document.getElementById('modalTitle').textContent = 'Sign In';
+        document.getElementById('toggleButton').textContent = "Don't have an account? Sign Up";
+        document.getElementById('toggleButton').style.display = 'block';
+        document.getElementById('modal-buttons-section').style.display = 'block';
+      } else if (type === 'signUp') {
+        document.getElementById('signUpForm').style.display = 'block';
+        document.getElementById('signInForm').style.display = 'none';
+        document.getElementById('continueWithMobile').style.display = 'none';
+        document.getElementById('forgotPasswordForm').style.display = 'none';
+        document.getElementById('modalTitle').textContent = 'Sign Up';
+        document.getElementById('toggleButton').textContent = 'Already have an account? Sign In';
+        document.getElementById('toggleButton').style.display = 'block';
+        document.getElementById('modal-buttons-section').style.display = 'block';
+      } else if (type === 'mobile') {
+        document.getElementById('signUpForm').style.display = 'none';
+        document.getElementById('signInForm').style.display = 'none';
+        document.getElementById('continueWithMobile').style.display = 'block';
+        document.getElementById('forgotPasswordForm').style.display = 'none';
+        document.getElementById('modalTitle').textContent = 'Continue with Phone';
+        document.getElementById('toggleButton').style.display = 'none';
+        document.getElementById('modal-buttons-section').style.display = 'block';
+      } else if (type === 'forgotPassword') {
+        document.getElementById('signUpForm').style.display = 'none';
+        document.getElementById('signInForm').style.display = 'none';
+        document.getElementById('continueWithMobile').style.display = 'none';
+        document.getElementById('forgotPasswordForm').style.display = 'block';
+        document.getElementById('modalTitle').textContent = 'Forgot Password';
+        document.getElementById('toggleButton').style.display = 'none';
+        document.getElementById('modal-buttons-section').style.display = 'none';
+      }
+    }
+
+    function sendResetLink() {
+      const email = document.getElementById('forgotPasswordEmail').value;
+      if (!email) {
+        alert('Please enter your email address');
+        return;
+      }
+
+      alert(`Password reset link sent to ${email}. Please check your inbox.`);
+      setFormType('signIn');
+    }
+
+    function toggleForm() {
+      const signInFormVisible = document.getElementById('signInForm').style.display !== 'none';
+      setFormType(signInFormVisible ? 'signUp' : 'signIn');
+    }
+
+    function selectCountryCode(element) {
+      const code = element.getAttribute('data-code');
+      const flag = element.getAttribute('data-flag');
+      document.getElementById('countryCodeBtn').textContent = `${flag} ${code}`;
+      document.getElementById('countryCode').value = code;
+
+      document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      element.classList.add('active');
+    }
+
+    $(document).ready(function () {
+      $('#togglePhoneEmailBtn').on('click', function () {
+        const isMobileVisible = $('#continueWithMobile').is(':visible');
+        const toggleText = $('#togglePhoneEmailBtnText');
+
+        if (!isMobileVisible) {
+          setFormType('mobile');
+          toggleText.text('Continue with Email');
+        } else {
+          setFormType('signUp');
+          toggleText.text('Continue with Phone');
+          $('#toggleButton').show();
+        }
+      });
+
+      const modalAuth = document.getElementById('modalAuth');
+      const signInButton = document.querySelector('button[data-bs-target="#modalAuth"]');
+
+      $(modalAuth).on('hide.bs.modal', function (event) {
+        setTimeout(function () {
+          signInButton.focus();
+        }, 10);
+      });
+
+      const closeButton = modalAuth.querySelector('.btn-close');
+      if (closeButton) {
+        closeButton.addEventListener('click', function () {
+          setTimeout(function () {
+            signInButton.focus();
+          }, 10);
+        });
+      }
+    });
+  </script>
+
 </body>
 
 </html>
