@@ -1,0 +1,914 @@
+<html>
+
+<head>
+    <title>Firebase Category Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .spinner-container {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .count-badge {
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Firebase Category Management</h1>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Vendor Categories</h5>
+                        <span class="badge bg-light text-dark count-badge" id="categoryCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <button id="deleteVendorCategoriesBtn" class="btn btn-danger">Delete All Categories</button>
+                            <button id="addVendorCategoriesBtn" class="btn btn-success">Add Categories</button>
+                        </div>
+                        <div id="vendorCategoriesResult" class="alert d-none"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Vendor Sub-Categories</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <button id="deleteVendorSubCategoriesBtn" class="btn btn-danger">Delete
+                                Subcategories</button>
+                            <button id="addVendorSubCategoriesBtn" class="btn btn-success">Add Subcategories</button>
+                        </div>
+                        <div id="vendorSubCategoriesResult" class="alert d-none"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Management -->
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Product Management</h5>
+                        <span class="badge bg-light text-dark count-badge" id="productCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-start mb-3">
+                            <button id="deleteAllProductsBtn" class="btn btn-danger">Delete All Products</button>
+                        </div>
+                        <div id="productsResult" class="alert d-none"></div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <button id="deleteAllProductsBtn" class="btn btn-danger">Delete All Products</button>
+                            <button id="addProductBtn" class="btn btn-success">Add Sample Product</button>
+                        </div>
+                        <div id="productsResult" class="alert d-none"></div>
+
+                        <!-- Add Product Form -->
+                        <div class="card mt-3">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">Add Product</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="addProductForm">
+                                    <div class="mb-3">
+                                        <label for="productName" class="form-label">Product Name</label>
+                                        <input type="text" class="form-control" id="productName"
+                                            value="Red Kidney Beans" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productBrand" class="form-label">Brand</label>
+                                        <input type="text" class="form-control" id="productBrand" value="Primo">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productPrice" class="form-label">Price</label>
+                                        <input type="number" step="0.01" class="form-control" id="productPrice"
+                                            value="1.48" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productWeight" class="form-label">Weight/Size</label>
+                                        <input type="text" class="form-control" id="productWeight" value="540 mL">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productImage" class="form-label">Image</label>
+                                        <input type="text" class="form-control" id="productImage"
+                                            value="https://placehold.co/400x300?text=Pantry-5">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productDescription" class="form-label">Product Details</label>
+                                        <textarea class="form-control" id="productDescription"
+                                            rows="4">Primo red kidney beans are low in fat, very high in fibre and a good source of iron. You can serve the beans hot or cold in your favourite salads, soups, pasta sauces and more. Nutritious and delicious, they absorb whatever flavours you blend them with.</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productNumber" class="form-label">Product Number</label>
+                                        <input type="text" class="form-control" id="productNumber" value="055900003965">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="categorySelect" class="form-label">Category</label>
+                                        <select class="form-control" id="categorySelect" required>
+                                            <option value="">Select Category</option>
+                                            <!-- Options will be loaded dynamically -->
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Product</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Hierarchy -->
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Category Hierarchy</h5>
+                    </div>
+                    <div class="card-body">
+                        <button id="showHierarchyBtn" class="btn btn-info">Show Category Hierarchy</button>
+                        <div id="hierarchyResult" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Operation Log</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="operationLog" class="bg-light p-3 rounded"
+                            style="max-height: 300px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDoya84WdBIexSXCNsabopVgs7XSWKoz7U",
+            authDomain: "bsamcart-dd9cb.firebaseapp.com",
+            databaseURL: "https://bsamcart-dd9cb-default-rtdb.firebaseio.com/",
+            projectId: "bsamcart-dd9cb",
+            storageBucket: "bsamcart-dd9cb.appspot.com",
+            messagingSenderId: "111163982289",
+            appId: "1:111163982289:web:a6ad4624f2cdc414b420f0",
+            measurementId: "G-V9930E2TZB"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        logOperation("Firebase initialized");
+
+        // Load counts when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAllCounts();
+        });
+
+        // Function to update all count displays
+        async function updateAllCounts() {
+            await updateCategoryCount();
+            await updateProductCount();
+        }
+
+        // Function to update category count
+        async function updateCategoryCount() {
+            try {
+                const db = firebase.firestore();
+                const snapshot = await db.collection('vendor_categories').get();
+
+                // Count parent categories and subcategories
+                let parentCount = 0;
+                let subCount = 0;
+
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (!data.parent_id || data.parent_id === '') {
+                        parentCount++;
+                    } else {
+                        subCount++;
+                    }
+                });
+
+                // Update display to show both counts
+                document.getElementById('categoryCount').textContent = `${parentCount} (${subCount} sub)`;
+                return snapshot.size;
+            } catch (error) {
+                logOperation(`Error getting category count: ${error.message}`);
+                return 0;
+            }
+        }
+
+        // Function to update product count
+        async function updateProductCount() {
+            try {
+                const db = firebase.firestore();
+                const snapshot = await db.collection('vendor_products').get();
+                const count = snapshot.size;
+                document.getElementById('productCount').textContent = count;
+                return count;
+            } catch (error) {
+                logOperation(`Error getting product count: ${error.message}`);
+                return 0;
+            }
+        }
+
+        // Helper function to show results in UI
+        function showResult(elementId, message, isSuccess) {
+            const resultElement = document.getElementById(elementId);
+            resultElement.textContent = message;
+            resultElement.classList.remove('d-none', 'alert-success', 'alert-danger');
+            resultElement.classList.add(isSuccess ? 'alert-success' : 'alert-danger');
+        }
+
+        // Helper function to log operations
+        function logOperation(message) {
+            const logElement = document.getElementById('operationLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `<strong>${timestamp}</strong>: ${message}`;
+            logElement.prepend(logEntry);
+        }
+
+        // Helper function to toggle loading state
+        function toggleLoading(elementId, isLoading) {
+            if (elementId === 'addProductForm') {
+                toggleFormLoading(isLoading);
+                return;
+            }
+
+            // Existing code for buttons
+            const button = document.getElementById(elementId);
+            if (!button) return;
+
+            // Rest of your existing toggleLoading function...
+        }
+
+        // Function to delete all documents in the vendor_categories collection
+        async function deleteAllVendorCategories() {
+            try {
+                toggleLoading('deleteVendorCategoriesBtn', true);
+
+                const db = firebase.firestore();
+                const vendorCategoriesRef = db.collection('vendor_categories');
+
+                // Get all documents from the collection
+                const snapshot = await vendorCategoriesRef.get();
+
+                // Check if collection has documents
+                if (snapshot.empty) {
+                    showResult('vendorCategoriesResult', 'No documents found in vendor_categories collection', true);
+                    logOperation('No documents found in vendor_categories collection');
+                    toggleLoading('deleteVendorCategoriesBtn', false);
+                    return;
+                }
+
+                // Create batch operations (with limit of 400 per batch)
+                let batch = db.batch();
+                let batchCount = 0;
+                let totalDeleted = 0;
+
+                // Add each document to the batch delete operation
+                snapshot.docs.forEach(doc => {
+                    batch.delete(doc.ref);
+                    batchCount++;
+                    totalDeleted++;
+
+                    if (batchCount >= 400) {
+                        batch.commit();
+                        batch = db.batch();
+                        batchCount = 0;
+                    }
+                });
+
+                // Commit any remaining operations
+                if (batchCount > 0) {
+                    await batch.commit();
+                }
+
+                const message = `Successfully deleted ${totalDeleted} documents from vendor_categories collection`;
+                showResult('vendorCategoriesResult', message, true);
+                logOperation(message);
+
+                // Update the counts after successful deletion
+                await updateAllCounts();
+            } catch (error) {
+                const errorMsg = `Error deleting vendor_categories documents: ${error.message}`;
+                showResult('vendorCategoriesResult', errorMsg, false);
+                logOperation(errorMsg);
+            } finally {
+                toggleLoading('deleteVendorCategoriesBtn', false);
+            }
+        }
+
+        // Function to add vendor categories
+        async function addVendorCategories() {
+            try {
+                toggleLoading('addVendorCategoriesBtn', true);
+
+                const db = firebase.firestore();
+                const vendorCategoriesRef = db.collection('vendor_categories');
+
+                // Category names to add
+                const categories = [
+                    "Fruits & Vegetables",
+                    "Dairy & Eggs",
+                    "Pantry",
+                    "Cooked Meals",
+                    "Value Pack",
+                    "Beverages",
+                    "Beer & Wine",
+                    "Meat & Poultry",
+                    "Vegan & Vegetarian Food",
+                    "Organic Groceries",
+                    "Snacks",
+                    "Frozen",
+                    "Bread & Bakery Products",
+                    "Deli & Prepared Meals",
+                    "Fish & Seafood",
+                    "World Cuisine",
+                    "Household & Cleaning",
+                    "Baby",
+                    "Health & Beauty",
+                    "Pet Care"
+                ];
+
+                // Create a batch operation
+                const batch = db.batch();
+
+                // Add each category to the batch
+                categories.forEach(category => {
+                    // Generate a random ID (similar to the example)
+                    const id = Math.random().toString(36).substring(2, 15) +
+                        Math.random().toString(36).substring(2, 15);
+
+                    const docRef = vendorCategoriesRef.doc(id);
+
+                    batch.set(docRef, {
+                        description: "",
+                        id: id,
+                        photo: "",
+                        publish: true,
+                        review_attributes: [],
+                        show_in_homepage: false,
+                        title: category,
+                        is_featured: false,
+                        parent_id: ""
+                    });
+                });
+
+                // Commit the batch
+                await batch.commit();
+                const message = `Successfully added ${categories.length} vendor categories`;
+                showResult('vendorCategoriesResult', message, true);
+                logOperation(message);
+
+                // Update the counts after successful addition
+                await updateAllCounts();
+            } catch (error) {
+                const errorMsg = `Error adding vendor categories: ${error.message}`;
+                showResult('vendorCategoriesResult', errorMsg, false);
+                logOperation(errorMsg);
+            } finally {
+                toggleLoading('addVendorCategoriesBtn', false);
+            }
+        }
+
+        // Function to delete only subcategories (items with parent_id)
+        async function deleteAllVendorSubCategories() {
+            try {
+                toggleLoading('deleteVendorSubCategoriesBtn', true);
+
+                const db = firebase.firestore();
+                const vendorCategoriesRef = db.collection('vendor_categories');
+
+                // Get all documents with non-empty parent_id
+                const snapshot = await vendorCategoriesRef.where('parent_id', '!=', '').get();
+
+                // Check if collection has subcategories
+                if (snapshot.empty) {
+                    showResult('vendorSubCategoriesResult', 'No subcategories found in vendor_categories collection', true);
+                    logOperation('No subcategories found in vendor_categories collection');
+                    toggleLoading('deleteVendorSubCategoriesBtn', false);
+                    return;
+                }
+
+                // Create batch operations (with limit of 400 per batch)
+                let batch = db.batch();
+                let batchCount = 0;
+                let totalDeleted = 0;
+
+                // Add each document to the batch delete operation
+                snapshot.docs.forEach(doc => {
+                    batch.delete(doc.ref);
+                    batchCount++;
+                    totalDeleted++;
+
+                    if (batchCount >= 400) {
+                        batch.commit();
+                        batch = db.batch();
+                        batchCount = 0;
+                    }
+                });
+
+                // Commit any remaining operations
+                if (batchCount > 0) {
+                    await batch.commit();
+                }
+
+                const message = `Successfully deleted ${totalDeleted} subcategories from vendor_categories collection`;
+                showResult('vendorSubCategoriesResult', message, true);
+                logOperation(message);
+
+                // Update the counts after successful deletion
+                await updateAllCounts();
+            } catch (error) {
+                const errorMsg = `Error deleting subcategories: ${error.message}`;
+                showResult('vendorSubCategoriesResult', errorMsg, false);
+                logOperation(errorMsg);
+            } finally {
+                toggleLoading('deleteVendorSubCategoriesBtn', false);
+            }
+        }
+
+        // Function to add subcategories for all vendor categories
+        async function addVendorSubCategories() {
+            try {
+                toggleLoading('addVendorSubCategoriesBtn', true);
+
+                const db = firebase.firestore();
+                const vendorCategoriesRef = db.collection('vendor_categories');
+
+                // Get all vendor categories (only parent categories)
+                const categoriesSnapshot = await vendorCategoriesRef.where('parent_id', '==', '').get();
+
+                if (categoriesSnapshot.empty) {
+                    showResult('vendorSubCategoriesResult', 'No vendor categories found. Please add categories first.', false);
+                    logOperation('No vendor categories found. Please add categories first.');
+                    return;
+                }
+
+                // Create a map of category titles to their IDs
+                const categoriesMap = {};
+                categoriesSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    categoriesMap[data.title] = doc.id;
+                });
+
+                // Define subcategories for each category
+                const subcategoriesMap = {
+                    "Fruits & Vegetables": [
+                        "Fruits", "Vegetables", "Fresh Herbs", "Packaged Salads & Vegetables",
+                        "Fresh-Cut Fruits & Vegetables", "Organic Fruits & Vegetables",
+                        "Dried Fruits & Nuts", "Vegan & Vegetarian"
+                    ],
+                    "Dairy & Eggs": [
+                        "Milk, Cream & Butter", "Eggs", "Yogurt", "Packaged Cheese",
+                        "Deli Cheese", "Sour Cream & Dips", "Chilled Desserts & Dough"
+                    ],
+                    "Pantry": [
+                        "Baking Ingredients", "Canned & Jarred", "Cereals, Spreads & Syrups",
+                        "Condiments & Toppings", "Herbs, Spices & Sauces", "Oils & Vinegars",
+                        "World Cuisine", "Sides", "Pasta, Rice & Beans"
+                    ],
+                    "Cooked Meals": [
+                        "Ready-to-Eat", "Ready-to-Cook", "Value Pack", "Vegetarian"
+                    ],
+                    "Value Pack": [
+                        "Fresh Market", "Non-perishable", "Frozen", "Baby & Self Care", "Home"
+                    ],
+                    "Beverages": [
+                        "Coffee", "Tea & Hot Drinks", "Juices & Drinks", "Soft Drinks",
+                        "Sports & Energy Drinks", "Water", "Iced Tea & Coffee", "Drink Mixes",
+                        "Soy, Rice & Nut Beverages", "Non-Alcoholic Beverages"
+                    ],
+                    "Beer & Wine": [
+                        "Wines, Cocktails & Coolers"
+                    ],
+                    "Meat & Poultry": [
+                        "Beef & Veal", "Chicken & Turkey", "Pork", "Rabbit & Duck",
+                        "Lamb & Game Meat", "Sausages & Bacon", "Marinated & Prepared Meat",
+                        "Frozen Meat"
+                    ],
+                    "Vegan & Vegetarian Food": [
+                        "Tofu, Tempeh & Other Protein", "Beverages", "Pantry", "Snacks",
+                        "Refrigerated", "Frozen"
+                    ],
+                    "Organic Groceries": [
+                        "Fruits & Vegetables", "Bread & Bakery Products",
+                        "Meats, Poultry & Ocean products", "Organic baby world",
+                        "Eggs, Dairy & Alternatives product", "Pantry",
+                        "Snacks, Crackers & Chocolate", "Beverages", "Frozen Food",
+                        "Vegan & Vegetarian Food"
+                    ],
+                    "Snacks": [
+                        "Salty Snacks", "Sweet Snacks & Candy", "Nuts, Seeds & Fruit"
+                    ],
+                    "Frozen": [
+                        "Appetizers & Snacks", "Bakery", "Beverages & Ice", "Breakfast Foods",
+                        "Fruit & Vegetables", "Ice Cream & Treats", "Fish & Seafood",
+                        "Meat & Poultry", "Meals & Sides", "Pizza & Pasta"
+                    ],
+                    "Bread & Bakery Products": [
+                        "Freshly Baked Bread & Baguettes", "Packaged Bread", "Buns & Rolls",
+                        "Tortillas & Flat Breads", "Muffins, Bagels & Baked Goods",
+                        "Desserts & Pastries"
+                    ],
+                    "Deli & Prepared Meals": [
+                        "Deli Meats", "Antipasto, Dips & Pâtés", "Ready Meals & Sides",
+                        "Fresh Pizza, Pasta & Sauces", "Platters"
+                    ],
+                    "Fish & Seafood": [
+                        "Fresh Fish", "Fresh Seafood", "Frozen Fish & Seafood",
+                        "Prepared Fish & Seafood"
+                    ],
+                    "World Cuisine": [
+                        "Asian", "Latin", "Indian", "Mediterranean", "Other International Products"
+                    ],
+                    "Household & Cleaning": [
+                        "Paper", "Laundry", "Dishwashing", "Household Cleaning",
+                        "General Household", "Cooking & Kitchen Supplies"
+                    ],
+                    "Baby": [
+                        "Needs", "Food & Formula"
+                    ],
+                    "Health & Beauty": [
+                        "Face Care", "Hair Care", "Bath & Body Care", "Feminine Hygiene",
+                        "Oral Care", "Men's Products"
+                    ],
+                    "Pet Care": [
+                        "Dogs", "Cats", "Other Animals"
+                    ]
+                };
+
+                // Create a batch operation
+                let batch = db.batch();
+                let batchCount = 0;
+                let totalSubcategories = 0;
+
+                // For each category, add its subcategories
+                for (const [categoryTitle, parentId] of Object.entries(categoriesMap)) {
+                    const subcategories = subcategoriesMap[categoryTitle] || [];
+
+                    // Add each subcategory
+                    for (const subcategoryTitle of subcategories) {
+                        // Generate random ID
+                        const id = Math.random().toString(36).substring(2, 15) +
+                            Math.random().toString(36).substring(2, 15);
+
+                        const docRef = vendorCategoriesRef.doc(id);
+
+                        // Add to vendor_categories with parent_id set to parent category's ID
+                        batch.set(docRef, {
+                            description: "",
+                            id: id,
+                            photo: "",
+                            publish: true,
+                            review_attributes: [],
+                            show_in_homepage: false,
+                            title: subcategoryTitle,
+                            is_featured: false,
+                            parent_id: parentId  // Link to parent category
+                        });
+
+                        batchCount++;
+                        totalSubcategories++;
+
+                        // Firestore has a limit of 500 operations per batch
+                        if (batchCount >= 400) {
+                            await batch.commit();
+                            batch = db.batch();
+                            batchCount = 0;
+                        }
+                    }
+                }
+
+                // Commit any remaining operations
+                if (batchCount > 0) {
+                    await batch.commit();
+                }
+
+                const message = `Successfully added ${totalSubcategories} subcategories`;
+                showResult('vendorSubCategoriesResult', message, true);
+                logOperation(message);
+
+                // Update the counts after successful addition
+                await updateAllCounts();
+            } catch (error) {
+                const errorMsg = `Error adding subcategories: ${error.message}`;
+                showResult('vendorSubCategoriesResult', errorMsg, false);
+                logOperation(errorMsg);
+            } finally {
+                toggleLoading('addVendorSubCategoriesBtn', false);
+            }
+        }
+
+        // Function to display the category hierarchy
+        async function showCategoryHierarchy() {
+            try {
+                toggleLoading('showHierarchyBtn', true);
+                const db = firebase.firestore();
+                const categoriesSnapshot = await db.collection('vendor_categories').get();
+
+                // Create maps to organize the data
+                const parentCategories = {};
+                const subcategories = {};
+
+                // First process all categories
+                categoriesSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (!data.parent_id || data.parent_id === '') {
+                        // This is a parent category
+                        parentCategories[doc.id] = {
+                            id: doc.id,
+                            title: data.title,
+                            children: []
+                        };
+                    } else {
+                        // This is a subcategory
+                        subcategories[doc.id] = {
+                            id: doc.id,
+                            title: data.title,
+                            parentId: data.parent_id
+                        };
+                    }
+                });
+
+                // Assign subcategories to their parents
+                Object.values(subcategories).forEach(sub => {
+                    if (parentCategories[sub.parentId]) {
+                        parentCategories[sub.parentId].children.push(sub);
+                    }
+                });
+
+                // Generate HTML for the hierarchy
+                const hierarchyElement = document.getElementById('hierarchyResult');
+                hierarchyElement.innerHTML = '';
+
+                const hierarchyList = document.createElement('ul');
+                hierarchyList.className = 'list-group mt-3';
+
+                Object.values(parentCategories).forEach(parent => {
+                    const parentItem = document.createElement('li');
+                    parentItem.className = 'list-group-item';
+
+                    const categoryName = document.createElement('div');
+                    categoryName.className = 'fw-bold';
+                    categoryName.textContent = `${parent.title} (${parent.children.length} subcategories)`;
+                    parentItem.appendChild(categoryName);
+
+                    if (parent.children.length > 0) {
+                        const subList = document.createElement('ul');
+                        subList.className = 'list-group mt-2';
+
+                        parent.children.forEach(child => {
+                            const childItem = document.createElement('li');
+                            childItem.className = 'list-group-item bg-light border-0 py-1';
+                            childItem.textContent = child.title;
+                            subList.appendChild(childItem);
+                        });
+
+                        parentItem.appendChild(subList);
+                    }
+
+                    hierarchyList.appendChild(parentItem);
+                });
+
+                hierarchyElement.appendChild(hierarchyList);
+
+                // Log the operation
+                logOperation(`Displayed category hierarchy with ${Object.keys(parentCategories).length} parent categories and ${Object.keys(subcategories).length} subcategories`);
+
+            } catch (error) {
+                const errorMsg = `Error displaying category hierarchy: ${error.message}`;
+                logOperation(errorMsg);
+                document.getElementById('hierarchyResult').innerHTML = `<div class="alert alert-danger">${errorMsg}</div>`;
+            } finally {
+                toggleLoading('showHierarchyBtn', false);
+            }
+        }
+
+        // Function to delete all products
+        async function deleteAllProducts() {
+            try {
+                toggleLoading('deleteAllProductsBtn', true);
+
+                const db = firebase.firestore();
+                const productsRef = db.collection('vendor_products');
+
+                // Get all documents from the products collection
+                const snapshot = await productsRef.get();
+
+                // Check if collection has documents
+                if (snapshot.empty) {
+                    showResult('productsResult', 'No documents found in products collection', true);
+                    logOperation('No documents found in products collection');
+                    toggleLoading('deleteAllProductsBtn', false);
+                    return;
+                }
+
+                // Due to potential size limitations, delete in batches
+                let batchSize = 0;
+                let totalDeleted = 0;
+                let batch = db.batch();
+
+                // Process each document
+                for (const doc of snapshot.docs) {
+                    batch.delete(doc.ref);
+                    batchSize++;
+                    totalDeleted++;
+
+                    if (batchSize >= 400) {
+                        logOperation(`Committing batch delete of ${batchSize} products...`);
+                        await batch.commit();
+                        batch = db.batch();
+                        batchSize = 0;
+                    }
+                }
+
+                // Commit any remaining documents
+                if (batchSize > 0) {
+                    await batch.commit();
+                }
+
+                const message = `Successfully deleted ${totalDeleted} products`;
+                showResult('productsResult', message, true);
+                logOperation(message);
+
+                // Update the counts after successful deletion
+                await updateAllCounts();
+            } catch (error) {
+                const errorMsg = `Error deleting products: ${error.message}`;
+                showResult('productsResult', errorMsg, false);
+                logOperation(errorMsg);
+            } finally {
+                toggleLoading('deleteAllProductsBtn', false);
+            }
+        }
+
+        // Function to load categories into the dropdown
+        async function loadCategories() {
+            try {
+                const db = firebase.firestore();
+                const categoriesSnapshot = await db.collection('vendor_categories').where('parent_id', '==', '').get();
+
+                const categorySelect = document.getElementById('categorySelect');
+                categorySelect.innerHTML = '<option value="">Select Category</option>';
+
+                categoriesSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const option = document.createElement('option');
+                    option.value = doc.id;
+                    option.textContent = data.title;
+                    categorySelect.appendChild(option);
+                });
+
+                // Pre-select "Pantry" category if it exists
+                categoriesSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.title === "Pantry") {
+                        categorySelect.value = doc.id;
+                    }
+                });
+
+            } catch (error) {
+                logOperation(`Error loading categories: ${error.message}`);
+            }
+        }
+
+        // Function to add a product from the form
+        async function addProductFromForm(event) {
+            event.preventDefault();
+
+            try {
+                toggleLoading('addProductForm', true);
+
+                const productName = document.getElementById('productName').value;
+                const productBrand = document.getElementById('productBrand').value;
+                const productPrice = parseFloat(document.getElementById('productPrice').value);
+                const productWeight = document.getElementById('productWeight').value;
+                const productImage = document.getElementById('productImage').value;
+                const productDescription = document.getElementById('productDescription').value;
+                const productNumber = document.getElementById('productNumber').value;
+                const categoryId = document.getElementById('categorySelect').value;
+
+                if (!categoryId) {
+                    showResult('productsResult', 'Please select a category', false);
+                    return;
+                }
+
+                const db = firebase.firestore();
+                const productRef = db.collection('vendor_products').doc();
+
+                const productData = {
+                    id: productRef.id,
+                    name: productName,
+                    brand: productBrand,
+                    price: productPrice,
+                    attributes: {
+                        weight: productWeight
+                    },
+                    category_id: categoryId,
+                    description: productDescription,
+                    images: [productImage],
+                    product_number: productNumber,
+                    publish: true,
+                    created_at: firebase.firestore.FieldValue.serverTimestamp()
+                };
+
+                await productRef.set(productData);
+
+                const message = `Successfully added product: ${productName}`;
+                showResult('productsResult', message, true);
+                logOperation(message);
+
+                // Update the counts
+                await updateAllCounts();
+
+            } catch (error) {
+                const errorMsg = `Error adding product: ${error.message}`;
+                showResult('productsResult', errorMsg, false);
+                logOperation(errorMsg);
+            } finally {
+                toggleLoading('addProductForm', false);
+            }
+        }
+
+        // Add a function to handle loading state for the form
+        function toggleFormLoading(isLoading) {
+            const submitButton = document.querySelector('#addProductForm button[type="submit"]');
+            const inputs = document.querySelectorAll('#addProductForm input, #addProductForm select, #addProductForm textarea');
+
+            submitButton.disabled = isLoading;
+            inputs.forEach(input => {
+                input.disabled = isLoading;
+            });
+
+            if (isLoading) {
+                submitButton.innerHTML = `
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Adding...
+                `;
+            } else {
+                submitButton.textContent = 'Add Product';
+            }
+        }
+
+        // Set up event listeners
+        document.getElementById('deleteVendorCategoriesBtn').addEventListener('click', deleteAllVendorCategories);
+        document.getElementById('addVendorCategoriesBtn').addEventListener('click', addVendorCategories);
+        document.getElementById('deleteVendorSubCategoriesBtn').addEventListener('click', deleteAllVendorSubCategories);
+        document.getElementById('addVendorSubCategoriesBtn').addEventListener('click', addVendorSubCategories);
+        document.getElementById('deleteAllProductsBtn').addEventListener('click', deleteAllProducts);
+        document.getElementById('showHierarchyBtn').addEventListener('click', showCategoryHierarchy);
+        document.getElementById('addProductForm').addEventListener('submit', addProductFromForm);
+        document.addEventListener('DOMContentLoaded', loadCategories);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAllCounts();
+            loadCategories(); // Load categories when page loads
+        });
+        document.getElementById('addProductForm').addEventListener('submit', addProductFromForm);
+        document.getElementById('addProductBtn').addEventListener('click', async () => {
+            // Fill form with default values for quick adding
+            document.getElementById('productName').value = "Red Kidney Beans";
+            document.getElementById('productBrand').value = "Primo";
+            document.getElementById('productPrice').value = "1.48";
+            document.getElementById('productWeight').value = "540 mL";
+            document.getElementById('productImage').value = "https://placehold.co/400x300?text=Pantry-5";
+            document.getElementById('productDescription').value = "Primo red kidney beans are low in fat, very high in fibre and a good source of iron. You can serve the beans hot or cold in your favourite salads, soups, pasta sauces and more. Nutritious and delicious, they absorb whatever flavours you blend them with.";
+            document.getElementById('productNumber').value = "055900003965";
+
+            // Find and select the Pantry category
+            const categorySelect = document.getElementById('categorySelect');
+            for (let i = 0; i < categorySelect.options.length; i++) {
+                const option = categorySelect.options[i];
+                if (option.textContent === "Pantry") {
+                    categorySelect.value = option.value;
+                    break;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
