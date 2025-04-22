@@ -143,6 +143,25 @@
                     </div>
                 </div>
             </div>
+
+            <!-- User Management Section -->
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">User Management</h5>
+                        <span class="badge bg-light text-dark count-badge" id="userCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <button id="showUsersBtn" class="btn btn-primary">Show All User Emails</button>
+                        </div>
+                        <div id="usersResult" class="alert d-none"></div>
+                        <div id="usersTableContainer" class="mt-3">
+                            <ul class="list-group" id="usersList" style="display: none;"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row mt-3">
@@ -189,6 +208,7 @@
         async function updateAllCounts() {
             await updateCategoryCount();
             await updateProductCount();
+            await updateUserCount(); // Add this line
         }
 
         // Function to update category count
@@ -229,6 +249,20 @@
                 return count;
             } catch (error) {
                 logOperation(`Error getting product count: ${error.message}`);
+                return 0;
+            }
+        }
+
+        // Function to update user count
+        async function updateUserCount() {
+            try {
+                const db = firebase.firestore();
+                const snapshot = await db.collection('users').get();
+                const count = snapshot.size;
+                document.getElementById('userCount').textContent = count;
+                return count;
+            } catch (error) {
+                logOperation(`Error getting user count: ${error.message}`);
                 return 0;
             }
         }
@@ -874,6 +908,55 @@
             }
         }
 
+        // Function to display all user emails
+        async function showAllUserEmails() {
+            try {
+                toggleLoading('showUsersBtn', true);
+
+                const db = firebase.firestore();
+                const usersRef = db.collection('users');
+                const snapshot = await usersRef.get();
+
+                const usersList = document.getElementById('usersList');
+                usersList.innerHTML = '';
+
+                if (snapshot.empty) {
+                    showResult('usersResult', 'No users found in the database', true);
+                    usersList.style.display = 'none';
+                    return;
+                }
+
+                // Hide any previous result message
+                document.getElementById('usersResult').classList.add('d-none');
+
+                // Display each user's email
+                snapshot.forEach(doc => {
+                    const userData = doc.data();
+                    const email = userData.email;
+
+                    if (email) {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+                        listItem.textContent = email;
+
+                        usersList.appendChild(listItem);
+                    }
+                });
+
+                // Show the user list
+                usersList.style.display = 'block';
+                logOperation(`Displayed ${usersList.children.length} user emails`);
+
+            } catch (error) {
+                const errorMsg = `Error fetching users: ${error.message}`;
+                showResult('usersResult', errorMsg, false);
+                logOperation(errorMsg);
+                document.getElementById('usersList').style.display = 'none';
+            } finally {
+                toggleLoading('showUsersBtn', false);
+            }
+        }
+
         // Set up event listeners
         document.getElementById('deleteVendorCategoriesBtn').addEventListener('click', deleteAllVendorCategories);
         document.getElementById('addVendorCategoriesBtn').addEventListener('click', addVendorCategories);
@@ -884,7 +967,7 @@
         document.getElementById('addProductForm').addEventListener('submit', addProductFromForm);
         document.addEventListener('DOMContentLoaded', loadCategories);
         document.addEventListener('DOMContentLoaded', () => {
-            updateAllCounts();
+            updateAllCounts(); // This will now also call updateUserCount()
             loadCategories(); // Load categories when page loads
         });
         document.getElementById('addProductForm').addEventListener('submit', addProductFromForm);
@@ -908,6 +991,7 @@
                 }
             }
         });
+        document.getElementById('showUsersBtn').addEventListener('click', showAllUserEmails);
     </script>
 </body>
 
